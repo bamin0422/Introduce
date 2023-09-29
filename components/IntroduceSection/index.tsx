@@ -20,7 +20,7 @@ export default function IntroduceSection() {
             height={240}
           />
         </div>
-        <div className="px-12">
+        <div className="px-8 md:px-12">
           <h1 className="font-bold text-2xl md:text-3xl mt-8">
             안녕하세요. 민대인입니다. 😄
           </h1>
