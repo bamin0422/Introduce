@@ -100,8 +100,7 @@ const projectsConfig: ProjectCardItem[] = [
   {
     id: "bj",
     name: "방구석전시회",
-    description:
-      "삐약삐약 안드로이드 앱 1.0.0.0 ~ 1.0.2.4 유지보수 및 2차 개발",
+    description: "온라인 영상작품 NFT 아트페어 플랫폼",
     contents: [
       "Klaytn, KIP-17 토큰 기반 BJ NFT 토큰 민팅",
       "스마트 컨트랙트 구현",
@@ -115,8 +114,7 @@ const projectsConfig: ProjectCardItem[] = [
   {
     id: "withfi",
     name: "withfi",
-    description:
-      "삐약삐약 안드로이드 앱 1.0.0.0 ~ 1.0.2.4 유지보수 및 2차 개발",
+    description: "wifi ID, PW 스캔 시 자동 접속 및 QR로 공유할 수 있는 앱",
     contents: [
       "wifiManager 통해, wifi 스캔 및 연결 기능 구현",
       "Zxing 활용 wifi URI 담긴 QR 코드 생성",
