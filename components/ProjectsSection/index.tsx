@@ -31,7 +31,8 @@ const projectsConfig: ProjectCardItem[] = [
     image:
       "https://play-lh.googleusercontent.com/kRHoiavPruM8F0tFtMjiU_uobTYaBWE_dfYa7PlihkRuDrukNQSaS52Mp-DeLSpIgiI=w832-h470-rw",
     github: "",
-    storeLink: "",
+    storeLink:
+      "https://play.google.com/store/apps/details?id=daou.enFax&hl=ko&gl=US",
     projectLink:
       "https://bald-sloth-614.notion.site/aca8bd2f3fb24d3b9c1f9f746078faa5?pvs=4",
   },
