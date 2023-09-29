@@ -10,7 +10,6 @@
     "vercel-deploy": "next build && next export"
   },
   "dependencies": {
-    "@intoduce/core": "workspace:^",
     "next": "latest",
     "next-themes": "^0.2.1",
     "react": "latest",
