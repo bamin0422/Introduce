@@ -13,9 +13,7 @@ export interface NavItem {
 
 export default function Navbar({ navItems }: { navItems: Array<NavItem> }) {
   const { systemTheme, theme = "light", setTheme } = useTheme();
-  const currentTheme = localStorage.getItem("theme")
-    ? localStorage.getItem("theme")
-    : "light";
+  const currentTheme = theme === "system" ? systemTheme : theme;
   const pathname = usePathname();
   const [navbar, setNavbar] = useState(false);
 
