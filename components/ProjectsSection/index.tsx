@@ -134,7 +134,7 @@ const projectsConfig: ProjectCardItem[] = [
 export default function ProjectsSection() {
   return (
     <section id="projects">
-      <div className="my-4 md:mx-12 rounded-xl mx-4 p-4 text-center animate-fade-down">
+      <div className="my-4 md:mx-12 rounded-xl p-4 text-center animate-fade-down">
         <h1 className="text-2xl font-semibold pt-4 ">💁‍♂️ Projects</h1>
         <hr className="w-6 h-1 mx-auto my-8 bg-blue-500 border-0 rounded" />
         <div className="pb-4">
