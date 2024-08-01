@@ -26,7 +26,7 @@ export function SkillTree({ skillArray }: SkillProps) {
               key={skill.type}
               className={
                 skill.type +
-                " px-4 py-2 mr-2 mt-2 text-slate-700 dark:text-black rounded font-semibold"
+                " px-4 py-2 mr-2 mt-2 text-slate-100 dark:text-black rounded font-semibold"
               }
             >
               {skill.title}

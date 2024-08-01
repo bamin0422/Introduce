@@ -4,7 +4,11 @@ import { CustomList } from "../CustomList";
 import { ContactList } from "../ContactList";
 
 const CustomListConfig = {
-  list: ["Android : 삐약삐약, 엔팩스", "Front-End : 다우오피스 통합 FE"],
+  list: [
+    "새로운 공통 컴포넌트를 개발해서 공유할 때 즐거움을 느껴요! 😆",
+    "컴포넌트의 리렌더링을 최대한 방지하기 위해, Context API의 Scope를 고려하고 효율적인 전역 상태 관리 라이브러리 도입을 지향해요. 🛠",
+    "서비스만의 디자인시스템을 중시해, Storybook을 적극적으로 활용하기 위해 노력하고 있어요! 🙇‍♂️",
+  ],
 };
 
 export default function IntroduceSection() {
@@ -24,12 +28,7 @@ export default function IntroduceSection() {
           <h1 className="font-bold text-2xl md:text-3xl mt-8">
             안녕하세요. 민대인입니다. 😄
           </h1>
-          <CustomList {...CustomListConfig} />
-          <p className="my-4">
-            Android App 개발과 Front-End 개발을 좋아하는{" "}
-            <span className="font-semibold text-blue-600">Client 개발자</span>
-            입니다. 🥳
-          </p>
+          <CustomList className="mb-4" {...CustomListConfig} />
           <ContactList />
         </div>
       </div>

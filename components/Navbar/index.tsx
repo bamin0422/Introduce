@@ -1,4 +1,4 @@
-"use client"; // this is a client component
+"use client";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -14,7 +14,6 @@ export interface NavItem {
 export default function Navbar({ navItems }: { navItems: Array<NavItem> }) {
   const { systemTheme, theme = "light", setTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
-  const pathname = usePathname();
   const [navbar, setNavbar] = useState(false);
 
   return (
