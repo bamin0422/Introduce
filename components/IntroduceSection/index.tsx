@@ -16,7 +16,7 @@ export default function IntroduceSection() {
     <section id="home">
       <div className="md:bg-slate-100 bg-white md:mx-24 mx-4 dark:black md:shadow-none shadow-2xl dark:bg-black rounded-xl mt-24 flex flex-col text-center items-center justify-center py-12 md:flex-row md:text-left animate-fade-down">
         <div>
-          <Image
+          <img
             className="rounded-full shadow-blue-300 shadow-2xl dark:shadow-blue-700 dark:shadow-2xl dark:bg-white"
             src="/introduce.png"
             alt=""
