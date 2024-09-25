@@ -7,7 +7,7 @@ export interface Props {
 
 export function ProjectCard({ projectInfo }: Props) {
   return (
-    <div className="sm:grid sm:items-stretch sm:grid-cols-3 gap-1">
+    <>
       <div
         id="company"
         className="flex flex-col justify-start pe-1 sm:col-span-1"
@@ -42,7 +42,7 @@ export function ProjectCard({ projectInfo }: Props) {
         </span>
         <span
           id="project-info-contents"
-          className="sm:text-[1rem] text-sm text-slate-500 font-normal"
+          className="bg-slate-600 px-4 py-2 rounded-xl sm:text-[1rem] text-sm text-white font-normal leading-7"
         >
           {projectInfo.info}
           <EmphasisText title="." />
@@ -54,7 +54,7 @@ export function ProjectCard({ projectInfo }: Props) {
           My Task
           <EmphasisText title="." />
         </span>
-        <ul className="custom-list-marker sm:text-[1rem] text-sm font-normal text-slate-500 list-disc">
+        <ul className="ps-[1rem] custom-list-marker sm:text-[1rem] text-sm font-normal text-slate-500 list-disc">
           {projectInfo.taskList.map((taskInfo) => (
             <li>{taskInfo}</li>
           ))}
@@ -74,7 +74,7 @@ export function ProjectCard({ projectInfo }: Props) {
           <EmphasisText title="." />
         </span>
       </div>
-    </div>
+    </>
   );
 }
 

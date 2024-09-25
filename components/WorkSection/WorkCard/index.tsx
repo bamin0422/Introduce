@@ -25,7 +25,11 @@ export function WorkCard({ workInfo }: Props) {
       </div>
       <div className="flex flex-col gap-10 sm:col-span-2">
         {workInfo.details.map((detailInfo) => (
-          <div id="project" className="flex flex-col w-full sm:gap-2 gap-1">
+          <div
+            key={`project-${detailInfo.title}`}
+            id="project"
+            className="flex flex-col w-full sm:gap-2 gap-1"
+          >
             <h4
               id="project-emp"
               className="sm:text-[1.8rem] text-[18px] text-black font-semibold"
