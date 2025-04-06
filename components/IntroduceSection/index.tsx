@@ -7,7 +7,7 @@ export default function IntroduceSection() {
         <img
           src="/introduce.png"
           alt=""
-          className="bg-cover bg-slate-200 border-[8px] rounded-sm border-white shadow-2xl"
+          className="bg-cover bg-slate-200 border-[8px] sm:rounded-sm border-white shadow-2xl rounded-full mb-8"
           width={167.25}
           height={209.625}
         />
