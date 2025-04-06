@@ -11,10 +11,12 @@ const workCardList: WorkInfo[] = [
     details: [
       {
         title: "다우오피스 차세대 Front-End",
-        info: "Next.js, TypeScript기반으로 모노레포로 구성하여 기존 다우오피스의 프론트엔드를 개선해 개발하는 프로젝트입니다",
+        info: "Backbone.js로 구성되어 있는 다우오피스 Frontend를 Next.js, TypeScript기반으로 모노레포로 구성하여 기존 다우오피스의 프론트엔드를 개선해 개발하는 프로젝트입니다.",
         myTaskList: [
-          "공통 컴포넌트 개발: Calendar, DatePicker, Table, CheckBox 등.",
-          "공통 컴포넌트 개발: Turbo Code Generator를 활용해, 불필요하게 컴포넌트를 생성할 필요없이 mdx와 stories 파일과 공통 컴포넌트 구성 파일을 Generating한다.",
+          "공통 컴포넌트 개발: Calendar, DatePicker, Table, CheckBox, AddressDialog, Kakaomap 등.",
+          "공통 컴포넌트 개발: Turbo Code Generator를 활용해, 불필요하게 컴포넌트를 생성할 필요없이 mdx와 stories 파일과 공통 컴포넌트 구성 파일을 Generating할 수 있게 구현.",
+          "기존 그룹웨어 컨텐츠 개선 : Backbone.js로 되어있는 프로젝트를 모두 migration하지 못해 기존 컨텐츠의 스타일 및 기능을 개선해 로드.",
+          "기존 스크립트 방식으로 로드해 사용할 수 밖에 없는 카카오맵을 선언적으로 사용할 수 있도록 컴포넌트화해 구성.",
           "인증 및 사용자 정보: 로그인 로직 구성, 간편 비밀번호 컴포넌트 및 Provider 구현, Tanstack Query와 GraphQL 활용 사용자 정보 fetch.",
           "대시보드-가젯 포팅: 기존 Backbone.js 코드로 작성되어 있는 가젯 코드들을 리액트 코드로 포팅하는 작업. (캘린더, Works 차트형, ToDo+, 예약 바로가기 가젯 등)",
           "통합설정: 통합으로 환경설정하는 부분으로, 관리에 나타나는 여러 Table을 Tanstack Table을 활용해 구현.",
