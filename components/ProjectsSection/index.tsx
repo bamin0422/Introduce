@@ -54,7 +54,7 @@ const projects: ProjectInfo[] = [
       },
       {
         name: "site URL",
-        href: "https://my-ticket-tiemer.vercel.app",
+        href: "https://my-ticket-timer.vercel.app",
       },
     ],
     startDate: "2024.07",
