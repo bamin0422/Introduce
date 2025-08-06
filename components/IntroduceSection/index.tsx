@@ -34,7 +34,7 @@ export default function IntroduceSection() {
         <br />
         <section className="md:p-10 !md:pb-0 space-y-8">
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold text-orange-400 inline-block py-1 rounded-md ">
+            <h3 className="text-lg font-semibold text-orange-400 inline-block py-1 rounded-md">
               컴포넌트 중심의 UI 설계
             </h3>
             <p className="text-sm md:text-base text-gray-700 leading-relaxed">
@@ -66,6 +66,19 @@ export default function IntroduceSection() {
               성능을 개선하고, ErrorBoundary로 예외 상황에서도 안정적인 UI를
               유지합니다. 성능은 곧 사용자 경험의 품질이라 믿고, 이를 지속적으로
               개선합니다.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-semibold text-orange-400 inline-block py-1 rounded-md">
+              MCP 서버 개발 및 API 설계
+            </h3>
+            <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+              Model Context Protocol (MCP) 서버를 개발하여 사업자등록번호 진위
+              확인 및 정보 조회 기능을 구현했습니다. MVC 패턴을 적용한
+              TypeScript 기반 서버로, REST API와 MCP 도구를 동시에 제공합니다.
+              Docker 컨테이너화와 Smithery AI 배포를 지원하며, 공공데이터포털
+              API 연동을 통해 실시간 사업자 정보를 조회할 수 있습니다.
             </p>
           </div>
         </section>

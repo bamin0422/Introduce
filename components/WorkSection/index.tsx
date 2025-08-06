@@ -10,7 +10,20 @@ const workCardList: WorkInfo[] = [
     endDate: "현재",
     details: [
       {
-        title: "다우오피스 차세대 Front-End",
+        title: "다우오피스 4.0 Frontend 운영",
+        info: "다우오피스 4.0 프론트엔드 운영 및 유지보수 작업을 진행하고 있습니다.",
+        myTaskList: [
+          "다우오피스 4.0.0.0 ~ 부터 운영 및 유지보수 작업.",
+          "Bitbucket Webhook과 LLM 활용 코드리뷰 자동화.",
+          "IE, Chrome, Safari 등 다양한 브라우저 환경에서의 호환성 이슈 해결.",
+          "운영 중 발생하는 결함 건 해결 및 개선.",
+          "Electron 기반 PC 메신저 결함 건 해결 및 개선.",
+          "모바일 웹 브릿지 연동 및 모바일 웹 브릿지 결함 건 해결 및 개선.",
+        ],
+        techStack: "Next.js, TypeScript, Electron",
+      },
+      {
+        title: "다우오피스 4.0 Frontend 개발",
         info: "Backbone.js로 구성되어 있는 다우오피스 Frontend를 Next.js, TypeScript기반으로 모노레포로 구성하여 기존 다우오피스의 프론트엔드를 개선해 개발하는 프로젝트입니다.",
         myTaskList: [
           "공통 컴포넌트 개발: Calendar, DatePicker, Table, CheckBox, AddressDialog, Kakaomap 등.",

@@ -4,24 +4,31 @@ import { ProjectInfo } from "./types";
 
 const projects: ProjectInfo[] = [
   {
-    title: "Mission-UI",
+    title: "사업자 등록번호 진위 여부 조회 MCP 서버",
     urlList: [
       {
-        name: "github",
-        href: "https://github.com/mission-ui/mission-ui",
+        name: "GitHub",
+        href: "https://github.com/bamin0422/mcp_business_check_server",
+      },
+      {
+        name: "Smithery AI",
+        href: "https://smithery.ai/server/@bamin0422/mcp_business_check_server",
       },
     ],
-    startDate: "2024.09",
-    endDate: "현재",
-    info: "주니어 프론트엔드 개발자들이 UI 라이브러리를 개발해 npm 배포와, storybook showcase에 배포한다는 mission을 가지고 시작한 프로젝트입니다",
+    startDate: "2024.07",
+    endDate: "2024.09",
+    info: "Model Context Protocol (MCP) 서버를 개발하여 사업자등록번호 진위 확인 및 정보 조회 기능을 구현했습니다. 공공데이터포털 API를 활용한 실시간 사업자 정보 조회 서비스입니다.",
     taskList: [
-      "프로젝트 전개 및 패키지 매니저 yarn berry 설정.",
-      "Storybook 기본 설정 (theme 등).",
-      "FSD 아키텍쳐 기반으로 프로젝트 구조 구성.",
-      "공통 컴포넌트 개발.",
+      "MVC 패턴 기반 TypeScript 서버 아키텍처 설계 및 구현",
+      "REST API와 MCP 도구 동시 제공 구조 설계",
+      "공공데이터포털 API 연동 및 사업자등록번호 검증 로직 구현",
+      "Docker 컨테이너화 및 Smithery AI 배포 설정",
+      "사업자 정보 조회 및 진위 확인 기능 개발",
+      "API 인증키 관리 및 보안 처리",
+      "에러 핸들링 및 로깅 시스템 구축",
     ],
     techStack:
-      "React.js, TypeScript, StoryBook, Vite, yarn berry, tailwind CSS, framer-motion",
+      "TypeScript, Node.js, Express.js, Docker, MCP, REST API, 공공데이터포털 API",
   },
   {
     title: "friendly-regex",
