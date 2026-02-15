@@ -10,7 +10,7 @@ const workCardList: WorkInfo[] = [
     endDate: "2026.02",
     details: [
       {
-        title: "dop-front 통합 프론트엔드 시스템 개발",
+        title: "다우오피스 통합 프론트엔드 시스템 개발 및 운영",
         info: "기업용 그룹웨어 SaaS 플랫폼인 다우오피스의 차세대 통합 프론트엔드를 설계·개발하고, Backbone.js 레거시 시스템을 Next.js와 TypeScript로 점진적으로 전환 중입니다.",
         myTaskList: [
           "모노레포 아키텍처 구축 참여: 코드 재사용성과 빌드 성능 향상을 위해 pnpm Workspace와 Turborepo 기반 모노레포 아키텍처 구축에 참여했습니다.",
