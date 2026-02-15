@@ -14,7 +14,7 @@ export default function IntroduceSection() {
         민대인 <span className="sm:text-[3rem] text-[1.5rem]">(bamin0422)</span>
         <EmphasisText title="." className="sm:text-[5rem] text-[3rem]" />
       </h1>
-      <p className="sm:text-[1rem] text-[0.8rem] p-8 rounded-[8px] border-2 border-dotted">
+      <p className="sm:text-[1rem] text-[0.8rem] p-8 rounded-[8px] border-2 border-dotted text-gray-800">
         <span className="text-orange-500 font-semibold">
           Learn once, write anywhere.
         </span>
