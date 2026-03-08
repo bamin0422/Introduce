@@ -7,6 +7,10 @@ const projects: ProjectInfo[] = [
     title: "HW Monitor",
     urlList: [
       {
+        name: "Website",
+        href: "https://hw-monitor-website.vercel.app",
+      },
+      {
         name: "GitHub",
         href: "https://github.com/bamin0422/hw-monitor",
       },

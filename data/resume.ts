@@ -172,6 +172,7 @@ export const resumeData: ResumeData = {
       techStack:
         "Electron, React, TypeScript, electron-vite, Tailwind CSS, Radix UI, Zustand, LangChain, serialport, Supabase, electron-updater",
       links: [
+        { name: "Website", url: "https://hw-monitor-website.vercel.app" },
         { name: "GitHub", url: "https://github.com/bamin0422/hw-monitor" },
         { name: "Download", url: "https://github.com/bamin0422/hw-monitor/releases/latest" },
       ],
