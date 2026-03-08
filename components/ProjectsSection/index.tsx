@@ -4,6 +4,34 @@ import { ProjectInfo } from "./types";
 
 const projects: ProjectInfo[] = [
   {
+    title: "HW Monitor",
+    urlList: [
+      {
+        name: "GitHub",
+        href: "https://github.com/bamin0422/hw-monitor",
+      },
+      {
+        name: "Download",
+        href: "https://github.com/bamin0422/hw-monitor/releases/latest",
+      },
+    ],
+    startDate: "2025.01",
+    endDate: "현재",
+    info: "Serial, TCP, UDP, BLE 하드웨어 통신을 실시간으로 모니터링하고, LLM 채팅으로 통신 데이터를 분석할 수 있는 Electron 기반 데스크톱 애플리케이션입니다. GitHub Actions CI/CD를 통해 macOS, Windows, Linux 크로스 플랫폼 빌드 및 자동 업데이트를 지원합니다.",
+    taskList: [
+      "Electron + React + TypeScript 기반 데스크톱 앱 설계 및 구현",
+      "Serial, TCP (Client/Server), UDP, BLE 멀티 프로토콜 통신 지원",
+      "LangChain 기반 멀티 LLM 연동 (Anthropic, OpenAI, Gemini, Groq, Ollama)",
+      "RAG 기반 통신 데이터 AI 분석 기능 구현",
+      "Supabase + Google OAuth 인증 및 클라우드 설정 동기화",
+      "GitHub Actions CI/CD로 OS별 크로스 플랫폼 빌드 자동화",
+      "electron-updater를 활용한 앱 자동 업데이트 기능",
+      "i18n 다국어 지원 (한국어/영어)",
+    ],
+    techStack:
+      "Electron, React, TypeScript, electron-vite, Tailwind CSS, Radix UI, Zustand, LangChain, serialport, Supabase, electron-updater",
+  },
+  {
     title: "사업자 등록번호 진위 여부 조회 MCP 서버",
     urlList: [
       {
