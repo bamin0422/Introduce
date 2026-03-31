@@ -53,7 +53,7 @@ export const resumeData: ResumeData = {
     title: "Frontend Developer",
   },
   summary:
-    "하나의 기술을 배워 여러 환경에 녹여내는 데에서 개발자로서의 가치를 찾습니다. React와 Next.js를 중심으로 웹 개발을 이어가며, 이제는 웹과 앱, 데스크톱 등 다양한 플랫폼을 넘나들며 일관된 사용자 경험과 유지보수 가능한 구조를 추구하고 있습니다. 컴포넌트 중심의 UI 설계와 Feature-Sliced Design을 통해 명확한 역할 분리와 모듈화를 실현하며, 성능 최적화와 사용자 중심의 설계에 중점을 둡니다.",
+    "사용자 관점에서 문제를 정의하고, 주도적으로 해결하는 데 가치를 둡니다. React와 Next.js 기반으로 기업용 SaaS 그룹웨어의 프론트엔드를 설계·개발·운영하며, 80개 이상의 어드민 설정 페이지 구축, AI 코드리뷰 자동화 시스템 개발, Sentry 에러 모니터링 재설계 등 서비스 품질과 운영 효율성을 동시에 개선해 왔습니다. 반복 작업을 자동화하고, 라이브러리와 도구를 만들어 팀 생산성을 높이는 일에 즐거움을 느낍니다.",
   skills: [
     {
       category: "Frontend Core",
@@ -70,15 +70,15 @@ export const resumeData: ResumeData = {
     },
     {
       category: "State Management",
-      items: ["Jotai", "TanStack Query", "Context API", "Recoil"],
+      items: ["Jotai", "Zustand", "TanStack Query", "Context API"],
     },
     {
       category: "Development Tools",
-      items: ["Vite", "pnpm", "Git", "ESLint", "Prettier"],
+      items: ["Vite", "Webpack", "pnpm", "Turborepo", "Git", "ESLint", "Prettier"],
     },
     {
-      category: "Architecture",
-      items: ["Feature-Sliced Design", "MVVM", "Component Design", "Monorepo"],
+      category: "Architecture & Infra",
+      items: ["Feature-Sliced Design", "Monorepo", "SSR (Next.js App Router)", "Docker", "Nginx", "Sentry"],
     },
   ],
   experience: [
@@ -88,36 +88,34 @@ export const resumeData: ResumeData = {
       period: "2023.07 ~ 현재",
       projects: [
         {
-          title: "다우오피스 4.0 Frontend 운영",
+          title: "다우오피스 4.0 Frontend 운영 및 자동화",
           description:
-            "다우오피스 4.0 프론트엔드 운영 및 유지보수 작업을 진행하고 있습니다.",
+            "다우오피스 4.0 프론트엔드 운영, 1,484건 버그 수정, AI 코드리뷰 자동화 시스템 구축, Sentry 에러 모니터링 재설계를 주도했습니다.",
           tasks: [
-            "다우오피스 4.0.0.0 ~ 부터 운영 및 유지보수 작업",
-            "Bitbucket Webhook과 LLM 활용 코드리뷰 자동화",
-            "IE, Chrome, Safari 등 다양한 브라우저 환경에서의 호환성 이슈 해결",
-            "운영 중 발생하는 결함 건 해결 및 개선",
+            "v4.0.0 ~ v4.2.2 운영 기간 동안 1,484건 결함 주도적 해결",
+            "AI 기반 PR 코드리뷰 자동화 시스템 설계·개발 (리뷰 응답 시간 99% 단축)",
+            "Sentry 선택적 로깅 시스템 설계 및 3개 앱 적용",
+            "모바일 앱 내 WebView/WebBridge 연동 및 결함 해결",
             "Electron 기반 PC 메신저 결함 건 해결 및 개선",
-            "모바일 웹 브릿지 연동 및 모바일 웹 브릿지 결함 건 해결 및 개선",
+            "Backbone.js 레거시 기술부채 단계적 청산",
           ],
-          techStack: "Next.js, TypeScript, Electron",
+          techStack: "Next.js, TypeScript, Electron, Sentry, NestJS",
         },
         {
           title: "다우오피스 4.0 Frontend 개발",
           description:
-            "Backbone.js로 구성되어 있는 다우오피스 Frontend를 Next.js, TypeScript기반으로 모노레포로 구성하여 기존 다우오피스의 프론트엔드를 개선해 개발하는 프로젝트입니다.",
+            "기업용 그룹웨어의 차세대 프론트엔드를 Next.js + TypeScript 모노레포로 설계·개발. 80개 이상의 어드민 설정 페이지, 대시보드 가젯, RBAC 권한 관리 등 운영 시스템을 구축했습니다.",
           tasks: [
-            "공통 컴포넌트 개발: Calendar, DatePicker, Table, CheckBox, AddressDialog, Kakaomap 등",
-            "Turbo Code Generator를 활용한 컴포넌트 자동 생성 시스템 구현",
-            "기존 그룹웨어 컨텐츠 개선 및 Backbone.js 마이그레이션",
-            "카카오맵 컴포넌트화 및 선언적 사용 방식 구현",
-            "인증 및 사용자 정보: 로그인 로직, 간편 비밀번호 컴포넌트, Tanstack Query와 GraphQL 활용",
-            "대시보드-가젯 포팅: 기존 Backbone.js 코드를 React 코드로 포팅",
-            "통합설정: Tanstack Table을 활용한 관리 테이블 구현",
-            "경영업무포탈-GNB: Jotai atomWithStorage, Tanstack Query, Fuse.js 활용한 검색 기능",
-            "경영업무포탈-Tab: Jotai atomWithStorage를 활용한 탭 관리 시스템",
+            "통합설정(GlobalConfig) 어드민 시스템: 5개 카테고리, 80개+ 설정 페이지 구축",
+            "RBAC 권한 관리 시스템: 관리자 목록 CRUD, 권한 설정, 관리자 로그 다운로드",
+            "공통 UI 컴포넌트 라이브러리: Radix UI 기반 Select, Dialog, DateField 등 개발",
+            "대시보드 가젯 시스템: 캘린더, 차트(ECharts), Todo 등 40개+ 가젯 독립 패키지화",
+            "Turbo Code Generator로 컴포넌트 Storybook stories 자동 생성",
+            "인증 시스템: 로그인, 간편 비밀번호, TanStack Query + GraphQL 사용자 정보 fetch",
+            "다국어(i18n) 6개 언어 리소스 관리, 서버 사이드 로케일 쿠키 연동",
           ],
           techStack:
-            "Next.js, TypeScript, StoryBook, Vite, Jotai, Context API, Tanstack Query, Tanstack Table, pnpm, tailwind CSS",
+            "Next.js (App Router), TypeScript, Jotai, TanStack Query, TanStack Table, Storybook, Vite, pnpm, Turborepo, Tailwind CSS",
         },
       ],
     },
