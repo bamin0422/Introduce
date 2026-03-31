@@ -46,16 +46,15 @@ const workCardList: WorkInfo[] = [
       },
       {
         title: "프론트엔드 개발 환경 개선 및 배포 자동화",
-        info: "Docker 멀티스테이지 빌드, Nginx 캐싱 전략, 리소스 버저닝 자동화를 통해 개발·배포 환경을 지속적으로 개선했습니다. v4.0.0 ~ v4.2.2까지 10회 이상의 릴리스를 안정적으로 배포했습니다.",
+        info: "Nginx 캐싱 전략, 리소스 버저닝 자동화, 모노레포 빌드 최적화를 통해 개발·배포 환경을 지속적으로 개선했습니다. v4.0.0 ~ v4.2.2까지 10회 이상의 릴리스를 안정적으로 배포했습니다.",
         myTaskList: [
           "Nginx Cache-Control 헤더 최적화 및 client_header_buffer 튜닝으로 브라우저 캐싱 전략 수립 (캐싱 시간 5분 단축).",
           "CSS/JS 리소스 revision 버저닝 시스템 구축으로 배포 시 캐시 무효화 자동화.",
-          "Dockerfile Node.js 22 업그레이드, Next.js standalone 빌드 기반 Docker 멀티스테이지 최적화.",
           "Nginx 로그 포맷 재설계 및 정적 리소스 서빙 최적화.",
           "Turborepo 빌드 파이프라인 관리 및 모노레포 빌드 최적화.",
         ],
         techStack:
-          "Docker, Nginx, Kubernetes, Turborepo, Next.js standalone",
+          "Nginx, Turborepo, Next.js standalone",
       },
       {
         title: "Sentry 에러 모니터링 시스템 설계 및 활성화",
