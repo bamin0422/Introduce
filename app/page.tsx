@@ -1,29 +1,21 @@
 "use client";
-import AboutSection from "@web/components/AboutSection";
 import IntroduceSection from "@web/components/IntroduceSection/index";
-import ProjectsSection from "@web/components/ProjectsSection/index";
 import WorkSection from "@web/components/WorkSection";
+import ProjectsSection from "@web/components/ProjectsSection/index";
+import AboutSection from "@web/components/AboutSection";
+import { Separator } from "@web/components/ui/separator";
 
 export default function Home() {
   return (
-    <main>
-      <style>
-        {`
-          ::selection {
-            background-color: rgb(249 115 22);
-            color: black; 
-          }
-        `}
-      </style>
-      <div className="flex justify-center">
-        <div className="flex flex-col justify-center sm:w-[50rem]">
-          <IntroduceSection />
-          <WorkSection />
-          <hr className="mx-[2rem] border-t-[0.01rem] border-slate-300" />
-          <ProjectsSection />
-          <hr className="mx-[2rem] border-t-[0.01rem] border-slate-300" />
-          <AboutSection />
-        </div>
+    <main className="min-h-screen bg-background">
+      <div className="max-w-3xl mx-auto px-6 py-16">
+        <IntroduceSection />
+        <Separator className="my-12" />
+        <WorkSection />
+        <Separator className="my-12" />
+        <ProjectsSection />
+        <Separator className="my-12" />
+        <AboutSection />
       </div>
     </main>
   );

@@ -1,4 +1,3 @@
-import { EmphasisText } from "../EmphasisText";
 import { WorkInfo } from "./types";
 import WorkCard from "./WorkCard";
 
@@ -130,17 +129,13 @@ const workCardList: WorkInfo[] = [
   },
 ];
 
-// TODO : 각각의 CompanyCard > ProjectCard 컴포넌트로 컴포넌트화할 것!
 export function WorkSection() {
   return (
-    <section id="work" className="flex flex-col p-[2rem] mt-[3rem]">
-      <h2 className="text-[3rem] text-black font-semibold pb-10">
-        Work
-        <EmphasisText title="." />
-      </h2>
-      <div className="flex flex-col gap-10">
+    <section id="work">
+      <h2 className="text-2xl font-bold tracking-tight mb-8">Work Experience</h2>
+      <div className="space-y-12">
         {workCardList.map((workInfo) => (
-          <WorkCard workInfo={workInfo} />
+          <WorkCard key={workInfo.title + workInfo.startDate} workInfo={workInfo} />
         ))}
       </div>
     </section>

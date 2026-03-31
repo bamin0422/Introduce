@@ -2,7 +2,7 @@ export interface ProjectInfo {
   title: string;
   urlList?: UrlInfo[];
   startDate: string;
-  endDate: string | Date;
+  endDate: string;
   info: string;
   taskList: string[];
   techStack: string;

@@ -1,8 +1,8 @@
 export interface WorkInfo {
   title: string;
   role: string;
-  startDate: string | Date;
-  endDate: string | Date;
+  startDate: string;
+  endDate: string;
   details: WorkDetailInfo[];
 }
 
