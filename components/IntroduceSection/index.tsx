@@ -50,11 +50,13 @@ export default function IntroduceSection() {
       </div>
 
       <p className="text-muted-foreground text-base leading-relaxed mb-10">
-        사용자 관점에서 문제를 정의하고, 주도적으로 해결하는 개발자입니다.
-        안드로이드 개발자로 커리어를 시작하며 모바일 앱 내 웹앱 연동과 사용자
-        경험 설계를 경험했고, 이후 프론트엔드로 전향하여 React와 Next.js를
-        중심으로 기업용 SaaS 그룹웨어의 프론트엔드를 설계·개발·운영해
-        왔습니다.
+        <span className="text-primary font-semibold">Learn once, write anywhere.</span>
+        <br /><br />
+        하나의 기술을 배워 여러 환경에 녹여내는 데에서 개발자로서의 가치를
+        찾습니다. 안드로이드 개발자로 커리어를 시작하며 모바일 앱 내 웹앱
+        연동과 사용자 경험 설계를 경험했고, 이후 프론트엔드로 전향하여 React와
+        Next.js를 중심으로 기업용 SaaS 그룹웨어의 프론트엔드를
+        설계·개발·운영해 왔습니다.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
