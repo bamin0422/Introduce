@@ -3,8 +3,9 @@ export interface ProjectInfo {
   urlList?: UrlInfo[];
   startDate: string;
   endDate: string;
-  info: string;
-  taskList: string[];
+  problem: string;
+  actions: string[];
+  results: string[];
   techStack: string;
 }
 

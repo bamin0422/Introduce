@@ -8,7 +8,8 @@ export interface WorkInfo {
 
 export interface WorkDetailInfo {
   title: string;
-  info: string;
-  myTaskList: string[];
+  problem: string;
+  actions: string[];
+  results: string[];
   techStack: string;
 }
