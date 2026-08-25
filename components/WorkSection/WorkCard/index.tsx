@@ -7,6 +7,8 @@ import {
 } from "@web/components/ui/card";
 import { Badge } from "@web/components/ui/badge";
 import { WorkInfo } from "../types";
+import Reveal from "@web/components/motion/Reveal";
+import TiltCard from "@web/components/motion/TiltCard";
 
 export interface Props {
   workInfo: WorkInfo;
@@ -52,20 +54,24 @@ function ParList({ items }: { items: string[] }) {
 export function WorkCard({ workInfo }: Props) {
   return (
     <div className="space-y-8">
-      <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-        <h3 className="text-xl font-bold tracking-tight">{workInfo.title}</h3>
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <span>{workInfo.role}</span>
-          <span>·</span>
-          <span>
-            {workInfo.startDate} — {workInfo.endDate}
-          </span>
+      <Reveal>
+        <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+          <h3 className="font-display text-xl tracking-tight">{workInfo.role}</h3>
+          <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+            <span>{workInfo.title}</span>
+            <span>·</span>
+            <span>
+              {workInfo.startDate} — {workInfo.endDate}
+            </span>
+          </div>
         </div>
-      </div>
+      </Reveal>
 
-      <div className="space-y-4">
+      <div className="timeline space-y-4">
         {workInfo.details.map((detail) => (
-          <Card key={detail.title} className="border-border/50">
+          <Reveal key={detail.title} className="timeline-item">
+          <TiltCard>
+          <Card className="border-border/50">
             <CardHeader className="pb-3">
               <CardTitle className="text-base">{detail.title}</CardTitle>
             </CardHeader>
@@ -97,6 +103,8 @@ export function WorkCard({ workInfo }: Props) {
               ))}
             </CardFooter>
           </Card>
+          </TiltCard>
+          </Reveal>
         ))}
       </div>
     </div>

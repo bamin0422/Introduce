@@ -53,7 +53,23 @@ function ParList({ items }: { items: string[] }) {
 
 export function ProjectCard({ projectInfo }: Props) {
   return (
-    <Card className="border-border/50 flex flex-col">
+    <Card className="border-border/50 flex flex-col h-full overflow-hidden">
+      {projectInfo.image && (
+        <a
+          href={projectInfo.urlList?.[0]?.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="project-thumb"
+          tabIndex={-1}
+          aria-hidden
+        >
+          <img
+            src={projectInfo.image}
+            alt={projectInfo.imageAlt ?? projectInfo.title}
+            loading="lazy"
+          />
+        </a>
+      )}
       <CardHeader>
         <div className="flex items-baseline justify-between">
           <CardTitle className="text-base">{projectInfo.title}</CardTitle>

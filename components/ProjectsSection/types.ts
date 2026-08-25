@@ -7,6 +7,8 @@ export interface ProjectInfo {
   actions: string[];
   results: string[];
   techStack: string;
+  image?: string;
+  imageAlt?: string;
 }
 
 export interface UrlInfo {

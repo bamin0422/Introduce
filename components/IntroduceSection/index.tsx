@@ -1,5 +1,7 @@
 "use client";
 import { Card, CardContent, CardHeader, CardTitle } from "@web/components/ui/card";
+import Reveal from "@web/components/motion/Reveal";
+import TiltCard from "@web/components/motion/TiltCard";
 
 const highlights = [
   {
@@ -36,43 +38,30 @@ const highlights = [
 
 export default function IntroduceSection() {
   return (
-    <section id="home">
-      <div className="flex items-center gap-6 mb-8">
-        <img
-          src="/introduce.png"
-          alt="프로필 사진"
-          className="w-24 h-24 rounded-full object-cover border-2 border-border shadow-sm"
-        />
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">민대인</h1>
-          <p className="text-muted-foreground mt-1">Frontend Developer</p>
-        </div>
-      </div>
-
-      <p className="text-muted-foreground text-base leading-relaxed mb-10">
-        <span className="text-primary font-semibold">Learn once, write anywhere.</span>
-        <br /><br />
-        하나의 기술을 배워 여러 환경에 녹여내는 데에서 개발자로서의 가치를
-        찾습니다. 안드로이드 개발자로 커리어를 시작하며 모바일 앱 내 웹앱
-        연동과 사용자 경험 설계를 경험했고, 이후 프론트엔드로 전향하여 React와
-        Next.js를 중심으로 기업용 SaaS 그룹웨어의 프론트엔드를
-        설계·개발·운영해 왔습니다.
-      </p>
+    <section id="skills" className="scroll-mt-24">
+      <Reveal>
+        <p className="section-eyebrow">Skills · 핵심 역량</p>
+        <h2 className="section-title">한 번 배운 원칙을 어디서든 같은 밀도로.</h2>
+      </Reveal>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {highlights.map((item) => (
-          <Card key={item.title} className="border-border/50">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-semibold">
-                {item.title}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {item.description}
-              </p>
-            </CardContent>
-          </Card>
+        {highlights.map((item, i) => (
+          <Reveal key={item.title} delay={(i % 2) * 0.08}>
+            <TiltCard className="h-full">
+              <Card className="border-border/50 h-full">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-sm font-semibold">
+                    {item.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {item.description}
+                  </p>
+                </CardContent>
+              </Card>
+            </TiltCard>
+          </Reveal>
         ))}
       </div>
     </section>

@@ -1,5 +1,6 @@
 import { WorkInfo } from "./types";
 import WorkCard from "./WorkCard";
+import Reveal from "@web/components/motion/Reveal";
 
 const workCardList: WorkInfo[] = [
   {
@@ -229,16 +230,14 @@ const workCardList: WorkInfo[] = [
 
 export function WorkSection() {
   return (
-    <section id="work">
-      <h2 className="text-2xl font-bold tracking-tight mb-8">
-        Work Experience
-      </h2>
-      <div className="space-y-12">
+    <section id="work" className="scroll-mt-24">
+      <Reveal>
+        <p className="section-eyebrow">Work · 다우기술</p>
+        <h2 className="section-title">문제 → 해결 → 검증으로 적어 둔 경력</h2>
+      </Reveal>
+      <div className="space-y-16">
         {workCardList.map((workInfo) => (
-          <WorkCard
-            key={workInfo.title + workInfo.startDate}
-            workInfo={workInfo}
-          />
+          <WorkCard key={`${workInfo.title}-${workInfo.role}`} workInfo={workInfo} />
         ))}
       </div>
     </section>

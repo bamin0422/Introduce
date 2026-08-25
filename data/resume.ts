@@ -341,7 +341,7 @@ export const resumeData: ResumeData = {
       ],
     },
     {
-      title: "HW Monitor",
+      title: "Dr Serial (구 HW Monitor)",
       period: "2025.01 ~ 현재",
       problem:
         "Serial, TCP, UDP, BLE 등 다양한 프로토콜로 연결되는 하드웨어 장비의 통신 데이터를 실시간 모니터링할 수 있는 범용 데스크톱 툴이 없어, 프로토콜별로 별도 도구를 사용하거나 직접 스크립트를 작성해야 했습니다.",
@@ -358,11 +358,11 @@ export const resumeData: ResumeData = {
       techStack:
         "Electron, React, TypeScript, electron-vite, Tailwind CSS, Radix UI, Zustand, LangChain, serialport, Supabase, electron-updater",
       links: [
-        { name: "Website", url: "https://hw-monitor-website.vercel.app" },
-        { name: "GitHub", url: "https://github.com/bamin0422/hw-monitor" },
+        { name: "Website", url: "https://dr-serial-website.vercel.app" },
+        { name: "GitHub", url: "https://github.com/bamin0422/dr-serial" },
         {
           name: "Download",
-          url: "https://github.com/bamin0422/hw-monitor/releases/latest",
+          url: "https://github.com/bamin0422/dr-serial/releases/latest",
         },
       ],
     },

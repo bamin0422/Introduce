@@ -1,9 +1,13 @@
 import ProjectCard from "./ProjectCard";
+import Reveal from "@web/components/motion/Reveal";
+import TiltCard from "@web/components/motion/TiltCard";
 import { ProjectInfo } from "./types";
 
 const projects: ProjectInfo[] = [
   {
     title: "Portfolio — 로컬 포트 관리 IDE형 데스크톱 앱",
+    image: "/images/projects/portfolio-demo.gif",
+    imageAlt: "Portfolio 앱에서 포트 목록과 미리보기, Claude 명령을 사용하는 데모",
     urlList: [
       { name: "GitHub", href: "https://github.com/bamin0422/portfolio" },
       {
@@ -30,13 +34,15 @@ const projects: ProjectInfo[] = [
       "Electron, JavaScript, HTML/CSS, MCP, Claude Code CLI, electron-builder, Homebrew",
   },
   {
-    title: "HW Monitor",
+    title: "Dr Serial (구 HW Monitor)",
+    image: "/images/projects/hw-monitor.jpg",
+    imageAlt: "Dr Serial 소개 사이트 — 연결·분석·디버깅 히어로와 앱 화면",
     urlList: [
-      { name: "Website", href: "https://hw-monitor-website.vercel.app" },
-      { name: "GitHub", href: "https://github.com/bamin0422/hw-monitor" },
+      { name: "Website", href: "https://dr-serial-website.vercel.app" },
+      { name: "GitHub", href: "https://github.com/bamin0422/dr-serial" },
       {
         name: "Download",
-        href: "https://github.com/bamin0422/hw-monitor/releases/latest",
+        href: "https://github.com/bamin0422/dr-serial/releases/latest",
       },
     ],
     startDate: "2025.01",
@@ -58,6 +64,8 @@ const projects: ProjectInfo[] = [
   },
   {
     title: "사업자 등록번호 진위 여부 조회 MCP 서버",
+    image: "/images/projects/mcp-business-check.jpg",
+    imageAlt: "mcp_business_check_server GitHub 저장소 미리보기",
     urlList: [
       {
         name: "GitHub",
@@ -87,6 +95,8 @@ const projects: ProjectInfo[] = [
   },
   {
     title: "friendly-regex",
+    image: "/images/projects/friendly-regex.jpg",
+    imageAlt: "friendly-regex GitHub 저장소 미리보기",
     urlList: [
       { name: "GitHub", href: "https://github.com/bamin0422/friendly-regex" },
       { name: "npm", href: "https://www.npmjs.com/package/friendly-regex" },
@@ -108,6 +118,8 @@ const projects: ProjectInfo[] = [
   },
   {
     title: "my-ticket-timer",
+    image: "/images/projects/my-ticket-timer.jpg",
+    imageAlt: "my-ticket-timer 라이브 화면 — 검은 배경의 날짜와 시:분:초 타이머",
     urlList: [
       { name: "GitHub", href: "https://github.com/bamin0422/my-ticket-timer" },
       { name: "Live", href: "https://my-ticket-timer.vercel.app" },
@@ -133,11 +145,18 @@ const projects: ProjectInfo[] = [
 
 export function ProjectsSection() {
   return (
-    <section id="project">
-      <h2 className="text-2xl font-bold tracking-tight mb-8">Projects</h2>
+    <section id="project" className="scroll-mt-24">
+      <Reveal>
+        <p className="section-eyebrow">Projects · {projects.length}</p>
+        <h2 className="section-title">사이드 프로젝트</h2>
+      </Reveal>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projects.map((projectInfo) => (
-          <ProjectCard key={projectInfo.title} projectInfo={projectInfo} />
+        {projects.map((projectInfo, i) => (
+          <Reveal key={projectInfo.title} delay={(i % 2) * 0.08}>
+            <TiltCard className="h-full">
+              <ProjectCard projectInfo={projectInfo} />
+            </TiltCard>
+          </Reveal>
         ))}
       </div>
     </section>
