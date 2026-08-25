@@ -3,6 +3,33 @@ import { ProjectInfo } from "./types";
 
 const projects: ProjectInfo[] = [
   {
+    title: "Portfolio — 로컬 포트 관리 IDE형 데스크톱 앱",
+    urlList: [
+      { name: "GitHub", href: "https://github.com/bamin0422/portfolio" },
+      {
+        name: "Download",
+        href: "https://github.com/bamin0422/portfolio/releases/latest",
+      },
+      { name: "LinkedIn", href: "https://lnkd.in/p/gBYs3ZRH" },
+    ],
+    startDate: "2026.07",
+    endDate: "현재",
+    problem:
+      "로컬에서 개발 서버와 프론트를 여러 개 띄우다 보면 어느 포트가 무엇이었는지 헷갈리고, 종료도 번거로우며, 미리보기와 로그가 여기저기 흩어졌습니다. AI에게 화면 조작을 시키려면 별도 브라우저 자동화 도구를 띄워야 하는 점도 불편했습니다.",
+    actions: [
+      "lsof로 LISTEN 중인 포트를 3초마다 감지해 포트·PID·프로세스·경로를 표시하고, HTTP 프로브로 web/srv 타입을 판별해 필터·검색·별칭·상단 고정을 지원하는 포트 관리 UI를 구현했습니다.",
+      "탭 UI로 여러 포트를 동시에 관리하며, 웹 포트는 앱 내 임베드 미리보기(주소창·뒤로/앞으로·개발자도구)로, 앱에서 실행한 서버는 실시간 stdout/stderr 로그로 보여주도록 했습니다.",
+      "앱 자체에 MCP 서버를 내장해 portfolio_snapshot·portfolio_click 등 도구로 Claude가 앱 안 미리보기 화면을 별도 브라우저 없이 직접 조작하는 \"AI 내부 화면 제어\"를 구현했습니다.",
+      "런타임 의존성 0의 순수 JS/HTML/CSS로 작성하고, macOS(Apple Silicon·Intel)·Windows 빌드와 Homebrew tap 배포를 구성했습니다.",
+    ],
+    results: [
+      "v0.1.2까지 릴리스해 GitHub Releases와 brew install --cask bamin0422/tap/portfolio로 설치할 수 있으며, LinkedIn과 사내 AI 라운지에 공개했습니다.",
+      "\"3000번 포트 화면에서 메일쓰기 눌러줘\" 같은 자연어 명령으로 앱 안 화면이 조작되는 것을 확인했습니다.",
+    ],
+    techStack:
+      "Electron, JavaScript, HTML/CSS, MCP, Claude Code CLI, electron-builder, Homebrew",
+  },
+  {
     title: "HW Monitor",
     urlList: [
       { name: "Website", href: "https://hw-monitor-website.vercel.app" },
