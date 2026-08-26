@@ -1,7 +1,7 @@
 "use client";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import { PLATFORMS } from "./SignalField";
+import { PLATFORMS } from "./GlassField";
 import SignalFieldGate from "./SignalFieldGate";
 
 const TAGLINE = "Learn once, write anywhere.";
