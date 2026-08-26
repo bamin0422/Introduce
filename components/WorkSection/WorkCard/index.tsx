@@ -9,6 +9,7 @@ import { Badge } from "@web/components/ui/badge";
 import { WorkInfo } from "../types";
 import Reveal from "@web/components/motion/Reveal";
 import TiltCard from "@web/components/motion/TiltCard";
+import DaouLogo from "@web/components/DaouLogo";
 
 export interface Props {
   workInfo: WorkInfo;
@@ -56,8 +57,13 @@ export function WorkCard({ workInfo }: Props) {
     <div className="space-y-8">
       <Reveal>
         <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-          <h3 className="font-display text-xl tracking-tight">{workInfo.role}</h3>
-          <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+          <h3 className="flex items-center gap-3 font-display text-xl tracking-tight">
+            {workInfo.role === "Frontend Developer" && (
+              <DaouLogo size="sm" />
+            )}
+            {workInfo.role}
+          </h3>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <span>{workInfo.title}</span>
             <span>·</span>
             <span>

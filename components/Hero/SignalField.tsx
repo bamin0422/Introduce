@@ -19,9 +19,9 @@ export const PLATFORMS = [
   { label: "WebView", pos: [-0.4, -2.7, -0.8] },
 ] as const;
 
-const ACCENT = new THREE.Color("#2F6BFF");
-const SIGNAL = new THREE.Color("#00C2A8");
-const INK = new THREE.Color("#0F1320");
+const ACCENT = new THREE.Color("#1F6FEB");
+const SIGNAL = new THREE.Color("#14B8A6");
+const INK = new THREE.Color("#0B1F33");
 
 function Lattice({ reduced }: { reduced: boolean }) {
   const ref = useRef<THREE.Points>(null);
@@ -169,20 +169,20 @@ function Rig({ reduced }: { reduced: boolean }) {
   return null;
 }
 
-function Scene({ reduced }: { reduced: boolean }) {
+function Scene({ reduced, offsetX }: { reduced: boolean; offsetX: number }) {
   const targets = useMemo(
     () => PLATFORMS.map((p) => new THREE.Vector3(...(p.pos as unknown as [number, number, number]))),
     []
   );
   return (
-    <>
+    <group position={[offsetX, 0.2, 0]}>
       <Rig reduced={reduced} />
       <Lattice reduced={reduced} />
       {targets.map((t, i) => (
         <Line
           key={i}
           points={[new THREE.Vector3(0, 0, 0), t]}
-          color="#0F1320"
+          color="#1F6FEB"
           lineWidth={1}
           transparent
           opacity={0.18}
@@ -195,11 +195,11 @@ function Scene({ reduced }: { reduced: boolean }) {
         <Pulse key={i} to={t} delay={i * 0.6} reduced={reduced} />
       ))}
       <Source reduced={reduced} />
-    </>
+    </group>
   );
 }
 
-export default function SignalField({ reduced }: { reduced: boolean }) {
+export default function SignalField({ reduced, offsetX = 0 }: { reduced: boolean; offsetX?: number }) {
   return (
     <Canvas
       dpr={[1, 1.75]}
@@ -209,7 +209,7 @@ export default function SignalField({ reduced }: { reduced: boolean }) {
       style={{ position: "absolute", inset: 0 }}
       aria-hidden
     >
-      <Scene reduced={reduced} />
+      <Scene reduced={reduced} offsetX={offsetX} />
     </Canvas>
   );
 }

@@ -40,6 +40,7 @@ export default function IntroduceSection() {
   return (
     <section id="skills" className="scroll-mt-24">
       <Reveal>
+        <span className="section-mark" />
         <p className="section-eyebrow">Skills · 핵심 역량</p>
         <h2 className="section-title">한 번 배운 원칙을 어디서든 같은 밀도로.</h2>
       </Reveal>

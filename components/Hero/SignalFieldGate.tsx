@@ -39,12 +39,21 @@ function StaticField() {
 
 export default function SignalFieldGate({ reduced }: { reduced: boolean }) {
   const [ok, setOk] = useState<boolean | null>(null);
-  useEffect(() => setOk(supportsWebGL()), []);
+  const [offsetX, setOffsetX] = useState(0);
+  useEffect(() => {
+    setOk(supportsWebGL());
+    // 데스크톱에서는 소스 노드를 사진과 텍스트 사이 여백 쪽으로 옮긴다
+    const mq = window.matchMedia("(min-width: 768px)");
+    const apply = () => setOffsetX(mq.matches ? -1.2 : 0);
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, []);
   if (ok === null) return null;
   if (!ok) return <StaticField />;
   return (
     <CanvasBoundary fallback={<StaticField />}>
-      <SignalField reduced={reduced} />
+      <SignalField reduced={reduced} offsetX={offsetX} />
     </CanvasBoundary>
   );
 }

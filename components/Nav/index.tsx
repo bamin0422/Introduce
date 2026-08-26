@@ -48,7 +48,7 @@ export default function Nav() {
           <a href="#home" className="font-display text-sm tracking-tight">
             Daein Min
           </a>
-          <ul className="flex gap-1 font-mono text-[11px] uppercase tracking-[0.18em]">
+          <ul className="flex gap-1 text-xs font-semibold">
             {SECTIONS.map((s) => (
               <li key={s.id}>
                 <a
@@ -56,7 +56,7 @@ export default function Nav() {
                   className={cn(
                     "rounded-full px-3 py-1 transition-colors",
                     active === s.id
-                      ? "bg-foreground text-background"
+                      ? "bg-gradient-to-r from-[hsl(var(--blue))] to-[hsl(var(--teal))] text-white"
                       : "text-muted-foreground hover:text-foreground"
                   )}
                 >
@@ -69,7 +69,7 @@ export default function Nav() {
       </div>
       <motion.div
         style={{ scaleX: width, transformOrigin: "0 0" }}
-        className="h-[2px] bg-primary"
+        className="h-[2px] bg-gradient-to-r from-[hsl(var(--blue))] to-[hsl(var(--teal))]"
       />
     </div>
   );

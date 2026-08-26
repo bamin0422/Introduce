@@ -147,6 +147,7 @@ export function ProjectsSection() {
   return (
     <section id="project" className="scroll-mt-24">
       <Reveal>
+        <span className="section-mark" />
         <p className="section-eyebrow">Projects · {projects.length}</p>
         <h2 className="section-title">사이드 프로젝트</h2>
       </Reveal>

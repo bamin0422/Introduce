@@ -4,22 +4,27 @@
 
 @layer base {
   :root {
-    --background: 210 20% 98%;
-    --foreground: 222.2 84% 4.9%;
+    /* 블루 → 그린 팔레트 */
+    --background: 195 40% 98%;
+    --foreground: 210 60% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 214.3 31.8% 91.4%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 214 95% 93%;
-    --accent-foreground: 221.2 83.2% 53.3%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
+    --card-foreground: 210 60% 12%;
+    --primary: 214 84% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 196 45% 93%;
+    --secondary-foreground: 210 50% 18%;
+    --muted: 195 35% 95%;
+    --muted-foreground: 210 18% 42%;
+    --accent: 172 66% 92%;
+    --accent-foreground: 172 70% 28%;
+    --border: 200 30% 88%;
+    --input: 200 30% 88%;
+    --ring: 172 70% 40%;
+    --radius: 0.9rem;
+    --teal: 172 70% 40%;
+    --teal-deep: 178 72% 30%;
+    --blue: 214 84% 52%;
+    --blue-deep: 218 80% 38%;
   }
 }
 
@@ -30,9 +35,12 @@
   body {
     @apply bg-background text-foreground;
     background-image:
-      linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
-    background-size: 24px 24px;
+      radial-gradient(900px 600px at 8% -10%, hsl(var(--blue) / 0.12), transparent 60%),
+      radial-gradient(800px 500px at 100% 20%, hsl(var(--teal) / 0.14), transparent 60%),
+      linear-gradient(rgba(20, 184, 166, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(31, 111, 235, 0.05) 1px, transparent 1px);
+    background-size: auto, auto, 28px 28px, 28px 28px;
+    background-attachment: fixed, fixed, scroll, scroll;
   }
 }
 
@@ -46,19 +54,61 @@ html {
   }
 }
 ::selection {
-  background: hsl(var(--primary) / 0.18);
+  background: hsl(var(--teal) / 0.25);
+}
+.text-gradient {
+  background: linear-gradient(90deg, hsl(var(--blue-deep)), hsl(var(--blue)) 40%, hsl(var(--teal)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.ring-gradient {
+  background: conic-gradient(from 210deg, hsl(var(--blue)), hsl(var(--teal)), hsl(var(--blue)));
+}
+.section-mark {
+  display: inline-block;
+  width: 2.5rem;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, hsl(var(--blue)), hsl(var(--teal)));
+  margin-bottom: 0.9rem;
+}
+/* 기술 스택 마키 */
+.marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+.marquee-track {
+  display: flex;
+  gap: 0.75rem;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    width: auto;
+  }
 }
 .font-display {
   font-family: var(--font-display), var(--font-body), sans-serif;
   font-weight: 700;
 }
 .section-eyebrow {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: hsl(var(--muted-foreground));
-  margin-bottom: 0.75rem;
+  font-size: 13px;
+  font-weight: 600;
+  color: hsl(var(--teal-deep));
+  margin-bottom: 0.5rem;
 }
 .section-title {
   font-family: var(--font-display), var(--font-body), sans-serif;
@@ -95,7 +145,7 @@ html {
   transition: opacity 240ms ease;
   background: radial-gradient(
     320px circle at var(--mx) var(--my),
-    hsl(var(--primary) / 0.14),
+    hsl(var(--teal) / 0.16),
     transparent 60%
   );
 }
@@ -149,7 +199,8 @@ html {
   width: 1px;
   background: linear-gradient(
     to bottom,
-    hsl(var(--primary) / 0.6),
+    hsl(var(--blue) / 0.7),
+    hsl(var(--teal) / 0.7),
     hsl(var(--border))
   );
 }
@@ -165,7 +216,7 @@ html {
   height: 11px;
   border-radius: 999px;
   background: hsl(var(--background));
-  border: 2px solid hsl(var(--primary));
+  border: 2px solid hsl(var(--teal));
   box-shadow: 0 0 0 4px hsl(var(--background));
 }
 @media (max-width: 640px) {
