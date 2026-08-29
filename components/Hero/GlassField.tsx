@@ -1,7 +1,7 @@
 "use client";
 import { useMemo, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Float, MeshTransmissionMaterial, RoundedBox } from "@react-three/drei";
+import { Float, RoundedBox } from "@react-three/drei";
 import * as THREE from "three";
 
 /** 히어로 칩에도 쓰는 플랫폼 목록 */
@@ -109,26 +109,19 @@ function makeScreen(kind: ScreenKind, w = 512, h = 320): THREE.CanvasTexture {
   return t;
 }
 
-function GlassMat({ tint, opacity = 1 }: { tint: string; opacity?: number }) {
+/** 유리 재질 — 굴절(transmission)은 패널마다 씬을 다시 그려 너무 비싸므로 반투명 + 클리어코트로 흉내낸다 */
+function GlassMat({ tint }: { tint: string }) {
   return (
-    <MeshTransmissionMaterial
-      samples={4}
-      resolution={384}
-      thickness={0.35}
-      roughness={0.28}
-      transmission={1}
-      ior={1.35}
-      chromaticAberration={0.02}
-      anisotropicBlur={0.2}
-      distortion={0.1}
-      distortionScale={0.3}
-      temporalDistortion={0.1}
+    <meshPhysicalMaterial
       color={tint}
-      attenuationColor={tint}
-      attenuationDistance={1.6}
-      opacity={opacity}
       transparent
-      toneMapped={false}
+      opacity={0.62}
+      roughness={0.3}
+      metalness={0}
+      clearcoat={1}
+      clearcoatRoughness={0.25}
+      envMapIntensity={0}
+      depthWrite={false}
     />
   );
 }
@@ -261,13 +254,13 @@ function Backdrop() {
   );
 }
 
-export default function GlassField({ reduced, offsetX = 0, scale = 1 }: { reduced: boolean; offsetX?: number; scale?: number }) {
+export default function GlassField({ reduced, offsetX = 0, scale = 1, active = true }: { reduced: boolean; offsetX?: number; scale?: number; active?: boolean }) {
   return (
     <Canvas
-      dpr={[1, 1.5]}
+      dpr={[1, 1.25]}
       camera={{ position: [0, 0, 8.5], fov: 36 }}
-      gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-      frameloop={reduced ? "demand" : "always"}
+      gl={{ antialias: true, alpha: true, powerPreference: "high-performance", stencil: false }}
+      frameloop={reduced || !active ? "demand" : "always"}
       aria-hidden
     >
       <ambientLight intensity={0.9} />

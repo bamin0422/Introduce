@@ -1,5 +1,5 @@
 "use client";
-import { Component, useEffect, useState, type ReactNode } from "react";
+import { Component, useEffect, useRef, useState, type ReactNode } from "react";
 import dynamic from "next/dynamic";
 
 const GlassField = dynamic(() => import("./GlassField"), { ssr: false });
@@ -41,6 +41,8 @@ export default function SignalFieldGate({ reduced }: { reduced: boolean }) {
   const [ok, setOk] = useState<boolean | null>(null);
   const [offsetX, setOffsetX] = useState(0);
   const [scale, setScale] = useState(1);
+  const [active, setActive] = useState(true);
+  const wrap = useRef<HTMLDivElement>(null);
   useEffect(() => {
     setOk(supportsWebGL());
     // 모바일에서는 컨테이너가 좁으니 씬을 줄인다
@@ -51,13 +53,22 @@ export default function SignalFieldGate({ reduced }: { reduced: boolean }) {
     };
     apply();
     mq.addEventListener("change", apply);
-    return () => mq.removeEventListener("change", apply);
+    // 히어로가 화면 밖이면 렌더 루프를 멈춘다
+    const io = new IntersectionObserver(([e]) => setActive(e.isIntersecting), { threshold: 0.05 });
+    if (wrap.current) io.observe(wrap.current);
+    return () => {
+      mq.removeEventListener("change", apply);
+      io.disconnect();
+    };
   }, []);
-  if (ok === null) return null;
-  if (!ok) return <StaticField />;
   return (
-    <CanvasBoundary fallback={<StaticField />}>
-      <GlassField reduced={reduced} offsetX={offsetX} scale={scale} />
-    </CanvasBoundary>
+    <div ref={wrap} className="absolute inset-0">
+      {ok === false && <StaticField />}
+      {ok && (
+        <CanvasBoundary fallback={<StaticField />}>
+          <GlassField reduced={reduced} offsetX={offsetX} scale={scale} active={active} />
+        </CanvasBoundary>
+      )}
+    </div>
   );
 }
