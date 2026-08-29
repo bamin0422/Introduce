@@ -25,20 +25,18 @@ export default function Hero() {
               initial={{ opacity: 0, x: -12 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, ease }}
-              className="mb-6 inline-flex items-center gap-3 rounded-full border border-border/80 bg-white/70 py-1.5 pl-1.5 pr-4 shadow-sm backdrop-blur"
+              className="glass glass-pill mb-6 inline-flex items-center gap-3 py-1.5 pl-1.5 pr-4"
             >
-              <span className="ring-gradient rounded-full p-[2px]">
-                <img
-                  src="/introduce.png"
-                  alt="민대인 프로필 사진"
-                  className="h-10 w-10 rounded-full bg-white object-cover object-top"
-                />
-              </span>
+              <img
+                src="/introduce.png"
+                alt="민대인 프로필 사진"
+                className="h-10 w-10 rounded-full border border-white bg-white object-cover object-top"
+              />
               <span className="text-xs font-semibold text-foreground">다우기술 · Frontend Developer</span>
             </motion.div>
 
             <motion.p
-              className="font-display text-gradient text-[clamp(1.5rem,3.2vw,2.3rem)] leading-[1.1] tracking-tight"
+              className="font-display text-[clamp(1.5rem,3.2vw,2.3rem)] leading-[1.1] tracking-tight text-primary"
               aria-label={TAGLINE}
             >
               {TAGLINE.split(" ").map((word, wi, words) => {
@@ -75,9 +73,10 @@ export default function Hero() {
               transition={{ delay: reduced ? 0 : 1, duration: 0.6 }}
               className="mt-6 max-w-lg text-[15px] leading-relaxed text-muted-foreground md:text-base"
             >
-              하나의 기술을 배워 여러 환경에 녹여냅니다. 안드로이드에서 시작해
-              React·Next.js 기반 기업용 SaaS 그룹웨어를 설계·운영하고, 지금은
-              Electron 앱과 MCP·Claude Code 스킬까지 같은 원칙으로 만듭니다.
+              React·Next.js로 기업용 SaaS 그룹웨어의 프론트엔드를 설계하고
+              운영합니다. 모노레포와 디자인 시스템, SSR부터 Electron 데스크톱,
+              WebView 브릿지, MCP·Claude Code 스킬까지 — 한 번 익힌 원칙을
+              어디서든 같은 밀도로 씁니다.
             </motion.p>
             <ul className="mt-6 flex flex-wrap gap-2" aria-label="다뤄온 플랫폼">
               {PLATFORMS.map((p, i) => (
@@ -86,7 +85,7 @@ export default function Hero() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: reduced ? 0 : 1.2 + i * 0.1 }}
-                  className="rounded-full border border-[hsl(var(--teal)/0.35)] bg-white/70 px-3 py-1 text-xs font-medium text-[hsl(var(--teal-deep))] backdrop-blur"
+                  className="glass glass-pill px-3 py-1 text-xs font-medium text-foreground/80"
                 >
                   {p.label}
                 </motion.li>

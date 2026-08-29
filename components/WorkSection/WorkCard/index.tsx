@@ -77,7 +77,7 @@ export function WorkCard({ workInfo }: Props) {
         {workInfo.details.map((detail) => (
           <Reveal key={detail.title} className="timeline-item">
           <TiltCard>
-          <Card className="border-border/50">
+          <Card>
             <CardHeader className="pb-3">
               <CardTitle className="text-base">{detail.title}</CardTitle>
             </CardHeader>

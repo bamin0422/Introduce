@@ -233,7 +233,6 @@ export function WorkSection() {
   return (
     <section id="work" className="scroll-mt-24">
       <Reveal>
-        <span className="section-mark" />
         <p className="section-eyebrow">Work · 다우기술</p>
         <h2 className="section-title">문제 → 해결 → 검증으로 적어 둔 경력</h2>
       </Reveal>
@@ -242,15 +241,14 @@ export function WorkSection() {
           href="https://daouoffice.gitbook.io/4.0"
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative mb-12 block overflow-hidden rounded-2xl border border-border/70 shadow-[0_24px_50px_-30px_hsl(var(--blue)/0.5)]"
+          className="group relative mb-12 block overflow-hidden rounded-2xl border border-white/70"
         >
           <img
             src="/images/daouoffice-40-banner.png"
             alt="다우오피스 4.0 출시"
             className="h-40 w-full object-cover object-right transition-transform duration-700 group-hover:scale-[1.02] sm:h-52"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 to-transparent" />
-          <div className="absolute inset-y-0 left-0 flex flex-col justify-center gap-3 p-6 sm:p-8">
+          <div className="glass absolute inset-y-4 left-4 flex max-w-md flex-col justify-center gap-3 rounded-xl p-5 sm:inset-y-6 sm:left-6 sm:p-6">
             <DaouLogo />
             <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
               6년 만의 대규모 업데이트. 모노레포 아키텍처부터 대시보드 가젯·네비게이션까지

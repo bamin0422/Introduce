@@ -9,7 +9,7 @@ const STACK = [
 export default function StackMarquee() {
   const items = [...STACK, ...STACK];
   return (
-    <div className="marquee -mx-6 border-y border-border/70 bg-white/60 py-3 backdrop-blur" aria-label="기술 스택">
+    <div className="marquee glass rounded-full py-3" aria-label="기술 스택">
       <ul className="marquee-track px-6">
         {items.map((t, i) => (
           <li
@@ -17,7 +17,7 @@ export default function StackMarquee() {
             aria-hidden={i >= STACK.length}
             className="flex items-center gap-3 whitespace-nowrap text-sm font-medium text-foreground/80"
           >
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[hsl(var(--blue))] to-[hsl(var(--teal))]" />
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
             {t}
           </li>
         ))}

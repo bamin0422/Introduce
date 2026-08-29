@@ -53,7 +53,7 @@ function ParList({ items }: { items: string[] }) {
 
 export function ProjectCard({ projectInfo }: Props) {
   return (
-    <Card className="border-border/50 flex flex-col h-full overflow-hidden">
+    <Card className="flex flex-col h-full overflow-hidden">
       {projectInfo.image && (
         <a
           href={projectInfo.urlList?.[0]?.href}

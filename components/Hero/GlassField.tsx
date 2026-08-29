@@ -6,12 +6,12 @@ import * as THREE from "three";
 
 /** 히어로 칩에도 쓰는 플랫폼 목록 */
 export const PLATFORMS = [
-  { label: "Android" },
-  { label: "Web" },
+  { label: "React · Next.js" },
+  { label: "Design System" },
   { label: "Electron" },
-  { label: "MCP" },
-  { label: "Skills" },
-  { label: "WebView" },
+  { label: "WebView Bridge" },
+  { label: "MCP · Claude Code" },
+  { label: "Android" },
 ] as const;
 
 const BLUE = "#1F6FEB";

@@ -43,8 +43,8 @@ export default function Nav() {
         visible ? "translate-y-0" : "-translate-y-full"
       )}
     >
-      <div className="border-b border-border/60 bg-background/80 backdrop-blur">
-        <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
+      <div className="px-4 pt-3">
+        <nav className="glass glass-pill mx-auto flex max-w-3xl items-center justify-between py-2 pl-5 pr-2">
           <a href="#home" className="font-display text-sm tracking-tight">
             Daein Min
           </a>
@@ -54,9 +54,9 @@ export default function Nav() {
                 <a
                   href={`#${s.id}`}
                   className={cn(
-                    "rounded-full px-3 py-1 transition-colors",
+                    "rounded-full px-3 py-1.5 transition-colors",
                     active === s.id
-                      ? "bg-gradient-to-r from-[hsl(var(--blue))] to-[hsl(var(--teal))] text-white"
+                      ? "bg-foreground text-white"
                       : "text-muted-foreground hover:text-foreground"
                   )}
                 >
@@ -69,7 +69,7 @@ export default function Nav() {
       </div>
       <motion.div
         style={{ scaleX: width, transformOrigin: "0 0" }}
-        className="h-[2px] bg-gradient-to-r from-[hsl(var(--blue))] to-[hsl(var(--teal))]"
+        className="mt-2 h-[2px] bg-primary"
       />
     </div>
   );

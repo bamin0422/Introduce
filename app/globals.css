@@ -34,13 +34,30 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image:
-      radial-gradient(900px 600px at 8% -10%, hsl(var(--blue) / 0.12), transparent 60%),
-      radial-gradient(800px 500px at 100% 20%, hsl(var(--teal) / 0.14), transparent 60%),
-      linear-gradient(rgba(20, 184, 166, 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(31, 111, 235, 0.05) 1px, transparent 1px);
-    background-size: auto, auto, 28px 28px, 28px 28px;
-    background-attachment: fixed, fixed, scroll, scroll;
+  }
+  /* 유리가 굴절할 배경 — 흐린 단색 원 두 개, 그라데이션 없음 */
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    border-radius: 999px;
+    filter: blur(90px);
+    pointer-events: none;
+  }
+  body::before {
+    width: 46vw;
+    height: 46vw;
+    left: -12vw;
+    top: -14vw;
+    background: hsl(var(--blue) / 0.16);
+  }
+  body::after {
+    width: 40vw;
+    height: 40vw;
+    right: -10vw;
+    bottom: -12vw;
+    background: hsl(var(--teal) / 0.18);
   }
 }
 
@@ -54,24 +71,22 @@ html {
   }
 }
 ::selection {
-  background: hsl(var(--teal) / 0.25);
+  background: hsl(var(--blue) / 0.2);
 }
-.text-gradient {
-  background: linear-gradient(90deg, hsl(var(--blue-deep)), hsl(var(--blue)) 40%, hsl(var(--teal)));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* ---------- Liquid Glass ---------- */
+.glass {
+  background: rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(11, 31, 51, 0.04),
+    0 1px 2px rgba(11, 31, 51, 0.04),
+    0 18px 40px -24px rgba(11, 31, 51, 0.25);
 }
-.ring-gradient {
-  background: conic-gradient(from 210deg, hsl(var(--blue)), hsl(var(--teal)), hsl(var(--blue)));
-}
-.section-mark {
-  display: inline-block;
-  width: 2.5rem;
-  height: 4px;
+.glass-pill {
   border-radius: 999px;
-  background: linear-gradient(90deg, hsl(var(--blue)), hsl(var(--teal)));
-  margin-bottom: 0.9rem;
 }
 /* 기술 스택 마키 */
 .marquee {
@@ -107,7 +122,7 @@ html {
 .section-eyebrow {
   font-size: 13px;
   font-weight: 600;
-  color: hsl(var(--teal-deep));
+  color: hsl(var(--blue));
   margin-bottom: 0.5rem;
 }
 .section-title {
@@ -143,9 +158,10 @@ html {
   pointer-events: none;
   opacity: 0;
   transition: opacity 240ms ease;
+  /* 유리 표면의 하이라이트 — 커서를 따라가는 흰 반사광 */
   background: radial-gradient(
-    320px circle at var(--mx) var(--my),
-    hsl(var(--teal) / 0.16),
+    280px circle at var(--mx) var(--my),
+    rgba(255, 255, 255, 0.55),
     transparent 60%
   );
 }
@@ -197,12 +213,7 @@ html {
   top: 0.5rem;
   bottom: 0.5rem;
   width: 1px;
-  background: linear-gradient(
-    to bottom,
-    hsl(var(--blue) / 0.7),
-    hsl(var(--teal) / 0.7),
-    hsl(var(--border))
-  );
+  background: hsl(var(--blue) / 0.35);
 }
 .timeline-item {
   position: relative;
@@ -216,7 +227,7 @@ html {
   height: 11px;
   border-radius: 999px;
   background: hsl(var(--background));
-  border: 2px solid hsl(var(--teal));
+  border: 2px solid hsl(var(--blue));
   box-shadow: 0 0 0 4px hsl(var(--background));
 }
 @media (max-width: 640px) {
