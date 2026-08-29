@@ -191,61 +191,72 @@ function Panel({ position, rotation = [0, 0, 0], size, tint, screen, screenInset
 }
 
 /** 노트북: 화면 패널 + 받침 슬랩 */
-function Laptop({ position, reduced }: { position: [number, number, number]; reduced: boolean }) {
+function Laptop({ position, rotation = [0, 0, 0], reduced }: { position: [number, number, number]; rotation?: [number, number, number]; reduced: boolean }) {
   return (
-    <group position={position} rotation={[0.05, -0.55, 0.02]}>
+    <group position={position} rotation={rotation}>
       <Panel position={[0, 0.5, 0]} rotation={[-0.12, 0, 0]} size={[1.6, 1.0]} tint={GLASS_TEAL} screen="code" depth={0.06} reduced={reduced} floatSpeed={0.8} />
       <Panel position={[0, -0.06, 0.55]} rotation={[-Math.PI / 2 + 0.1, 0, 0]} size={[1.7, 1.05]} tint={GLASS_TEAL} depth={0.05} reduced={reduced} floatSpeed={0.8} />
     </group>
   );
 }
 
-/** 마우스 위치에 따라 씬 전체를 살짝 기울인다 */
+/** 모니터: 화면 + 스탠드 */
+function Monitor({ position, reduced }: { position: [number, number, number]; reduced: boolean }) {
+  return (
+    <group position={position}>
+      <Panel position={[0, 0.2, 0]} size={[2.9, 1.8]} tint={GLASS_BLUE} screen="dashboard" screenInset={0.1} depth={0.1} reduced={reduced} floatSpeed={0.5} />
+      <Panel position={[0, -0.95, -0.05]} size={[0.32, 0.5]} tint={GLASS_BLUE} depth={0.08} reduced={reduced} floatSpeed={0.5} />
+      <Panel position={[0, -1.25, 0.05]} rotation={[-Math.PI / 2, 0, 0]} size={[1.3, 0.5]} tint={GLASS_BLUE} depth={0.06} reduced={reduced} floatSpeed={0.5} />
+    </group>
+  );
+}
+
+/** 마우스 위치에 따라 씬 전체를 살짝 기울인다 — 레퍼런스처럼 중앙에 모은 구도 */
 function Rig({ reduced }: { reduced: boolean }) {
   const group = useRef<THREE.Group>(null);
   const { pointer } = useThree();
   useFrame((_, dt) => {
     if (!group.current || reduced) return;
-    const tx = pointer.y * 0.12;
-    const ty = pointer.x * 0.22;
-    group.current.rotation.x = THREE.MathUtils.damp(group.current.rotation.x, tx, 4, dt);
-    group.current.rotation.y = THREE.MathUtils.damp(group.current.rotation.y, ty, 4, dt);
+    group.current.rotation.x = THREE.MathUtils.damp(group.current.rotation.x, pointer.y * 0.1, 4, dt);
+    group.current.rotation.y = THREE.MathUtils.damp(group.current.rotation.y, pointer.x * 0.2, 4, dt);
   });
   return (
-    <group ref={group}>
-      {/* 왼쪽·상단 가장자리에 모으고 텍스트 영역(중앙 오른쪽)은 비운다 */}
-      <Laptop position={[-4.6, -1.9, 0.2]} reduced={reduced} />
-      <Panel position={[-3.2, 1.9, -0.8]} size={[2.6, 1.7]} tint={GLASS_BLUE} screen="dashboard" reduced={reduced} floatSpeed={0.6} />
-      <Panel position={[-6.2, 0.6, 0.4]} rotation={[0.1, 0.35, -0.05]} size={[0.78, 1.6]} tint={GLASS_TEAL} screen="mobile" depth={0.07} reduced={reduced} floatSpeed={1.2} />
-      <Panel position={[0.4, 2.6, -1.0]} rotation={[0.05, -0.2, 0.04]} size={[1.3, 0.8]} tint={GLASS_BLUE} screen="chat" reduced={reduced} floatSpeed={1} />
-      <Panel position={[4.6, 2.5, -1.6]} rotation={[0, -0.25, 0]} size={[1.1, 0.7]} tint={GLASS_TEAL} reduced={reduced} floatSpeed={0.9} />
-      <Panel position={[5.6, -1.6, -0.6]} rotation={[0, -0.5, 0]} size={[0.9, 1.3]} tint={GLASS_TEAL} screen="code" reduced={reduced} floatSpeed={1.1} />
-      <Panel position={[3.2, -2.9, -1.2]} rotation={[0.1, -0.3, 0]} size={[1.6, 0.9]} tint={GLASS_BLUE} reduced={reduced} floatSpeed={0.7} />
+    <group ref={group} rotation={[0.08, -0.15, 0]}>
+      {/* 뒤판 */}
+      <Panel position={[0.3, 0.5, -1.2]} size={[4.2, 2.6]} tint={GLASS_BLUE} depth={0.06} reduced={reduced} floatSpeed={0.4} />
+      {/* 바닥 슬랩 */}
+      <Panel position={[-1.6, -1.5, 0.6]} rotation={[-1.25, 0.15, 0.2]} size={[3.0, 2.0]} tint="#60a5fa" depth={0.1} reduced={reduced} floatSpeed={0.4} />
+      <Monitor position={[0, 0.1, 0]} reduced={reduced} />
+      <Laptop position={[2.3, -0.7, 0.9]} rotation={[0.05, -0.55, 0.02]} reduced={reduced} />
+      <Panel position={[-2.2, -0.55, 1.2]} rotation={[0.15, 0.4, -0.08]} size={[0.72, 1.5]} tint={GLASS_TEAL} screen="mobile" depth={0.07} reduced={reduced} floatSpeed={1.1} />
+      <Panel position={[-1.5, 0.35, 0.8]} rotation={[0.05, 0.25, 0]} size={[1.2, 0.8]} tint={GLASS_TEAL} screen="chat" depth={0.06} reduced={reduced} floatSpeed={1} />
+      <Panel position={[1.3, 1.2, 0.7]} rotation={[0.05, -0.2, 0.03]} size={[1.1, 0.7]} tint={GLASS_BLUE} screen="code" depth={0.06} reduced={reduced} floatSpeed={0.9} />
+      <Panel position={[2.2, 1.9, -0.9]} rotation={[0, -0.3, 0]} size={[1.6, 1.0]} tint="#5eead4" depth={0.08} reduced={reduced} floatSpeed={0.7} />
     </group>
   );
 }
 
-/** 굴절이 보이도록 뒤에 옅은 그라데이션 배경판을 둔다 */
+/** 굴절이 보이도록 뒤에 옅은 배경판 — 가장자리는 투명하게 페이드해 페이지 배경과 섞는다 */
 function Backdrop() {
   const tex = useMemo(() => {
     const c = document.createElement("canvas");
-    c.width = 64;
-    c.height = 64;
+    c.width = 256;
+    c.height = 256;
     const g = c.getContext("2d")!;
-    const grad = g.createLinearGradient(0, 0, 64, 64);
-    grad.addColorStop(0, "#f5fafb");
-    grad.addColorStop(0.5, "#eaf3ff");
-    grad.addColorStop(1, "#e6f7f4");
+    const grad = g.createRadialGradient(128, 128, 20, 128, 128, 128);
+    grad.addColorStop(0, "rgba(226, 240, 255, 1)");
+    grad.addColorStop(0.55, "rgba(230, 247, 244, 0.9)");
+    grad.addColorStop(1, "rgba(245, 250, 251, 0)");
     g.fillStyle = grad;
-    g.fillRect(0, 0, 64, 64);
+    g.fillRect(0, 0, 256, 256);
     const t = new THREE.CanvasTexture(c);
     t.colorSpace = THREE.SRGBColorSpace;
     return t;
   }, []);
   return (
-    <mesh position={[0, 0, -4]}>
-      <planeGeometry args={[30, 18]} />
-      <meshBasicMaterial map={tex} toneMapped={false} />
+    <mesh position={[0, 0, -3]}>
+      <planeGeometry args={[9, 9]} />
+      <meshBasicMaterial map={tex} transparent toneMapped={false} />
     </mesh>
   );
 }
@@ -254,7 +265,7 @@ export default function GlassField({ reduced, offsetX = 0, scale = 1 }: { reduce
   return (
     <Canvas
       dpr={[1, 1.5]}
-      camera={{ position: [0, 0, 9], fov: 38 }}
+      camera={{ position: [0, 0, 8.5], fov: 36 }}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       frameloop={reduced ? "demand" : "always"}
       aria-hidden

@@ -43,11 +43,11 @@ export default function SignalFieldGate({ reduced }: { reduced: boolean }) {
   const [scale, setScale] = useState(1);
   useEffect(() => {
     setOk(supportsWebGL());
-    // 데스크톱에서는 소스 노드를 사진과 텍스트 사이 여백 쪽으로 옮긴다
+    // 모바일에서는 컨테이너가 좁으니 씬을 줄인다
     const mq = window.matchMedia("(min-width: 768px)");
     const apply = () => {
-      setOffsetX(mq.matches ? 0.8 : 0);
-      setScale(mq.matches ? 0.75 : 0.5);
+      setOffsetX(0);
+      setScale(mq.matches ? 0.8 : 0.62);
     };
     apply();
     mq.addEventListener("change", apply);

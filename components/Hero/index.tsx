@@ -11,52 +11,34 @@ export default function Hero() {
   const ease = [0.22, 1, 0.36, 1] as const;
 
   return (
-    <section
-      id="home"
-      className="relative min-h-[100svh] overflow-hidden"
-      aria-label="소개"
-    >
-      <div className="absolute inset-0 opacity-50 md:opacity-90">
-        <SignalFieldGate reduced={reduced} />
-      </div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background" />
-
+    <section id="home" className="relative overflow-hidden" aria-label="소개">
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-between px-6 pb-10 pt-8">
         <header className="flex items-center justify-between text-sm text-muted-foreground">
           <span className="font-display text-foreground">Daein Min</span>
           <span className="hidden sm:inline">Frontend Developer · Seoul</span>
         </header>
 
-        <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] md:gap-16">
-          {/* 사진 */}
-          <motion.figure
-            initial={{ opacity: 0, scale: 0.92, rotate: -3 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 0.8, ease }}
-            className="relative mx-auto w-[min(72vw,320px)] md:w-full md:max-w-[380px]"
-          >
-            <div className="ring-gradient absolute -inset-[3px] rounded-[2rem] opacity-90 blur-[1px]" />
-            <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-b from-[hsl(var(--accent))] to-white shadow-[0_30px_60px_-30px_hsl(var(--blue)/0.45)]">
-              <img
-                src="/introduce.png"
-                alt="민대인 프로필 사진"
-                className="aspect-[4/5] w-full object-cover object-top"
-              />
-            </div>
-            <motion.figcaption
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9, duration: 0.5 }}
-              className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-border bg-white/90 px-3 py-1 text-[11px] font-semibold sm:px-4 sm:py-1.5 sm:text-xs text-foreground shadow-sm backdrop-blur"
-            >
-              다우기술 · Frontend Developer
-            </motion.figcaption>
-          </motion.figure>
-
+        <div className="grid items-center gap-10 py-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:gap-6">
           {/* 텍스트 */}
           <div>
+            <motion.div
+              initial={{ opacity: 0, x: -12 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, ease }}
+              className="mb-6 inline-flex items-center gap-3 rounded-full border border-border/80 bg-white/70 py-1.5 pl-1.5 pr-4 shadow-sm backdrop-blur"
+            >
+              <span className="ring-gradient rounded-full p-[2px]">
+                <img
+                  src="/introduce.png"
+                  alt="민대인 프로필 사진"
+                  className="h-10 w-10 rounded-full bg-white object-cover object-top"
+                />
+              </span>
+              <span className="text-xs font-semibold text-foreground">다우기술 · Frontend Developer</span>
+            </motion.div>
+
             <motion.p
-              className="font-display text-gradient text-[clamp(1.5rem,3.4vw,2.4rem)] leading-[1.1] tracking-tight"
+              className="font-display text-gradient text-[clamp(1.5rem,3.2vw,2.3rem)] leading-[1.1] tracking-tight"
               aria-label={TAGLINE}
             >
               {TAGLINE.split(" ").map((word, wi, words) => {
@@ -68,10 +50,7 @@ export default function Hero() {
                         key={ci}
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                          delay: reduced ? 0 : 0.3 + (offset + ci) * 0.025,
-                          duration: 0.35,
-                        }}
+                        transition={{ delay: reduced ? 0 : 0.3 + (offset + ci) * 0.025, duration: 0.35 }}
                         className="inline-block"
                       >
                         {ch}
@@ -86,7 +65,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: reduced ? 0 : 0.1, duration: 0.7, ease }}
-              className="mt-3 text-[clamp(3.4rem,9vw,6.5rem)] font-black leading-[0.95] tracking-[-0.04em] text-foreground"
+              className="mt-3 text-[clamp(3.4rem,8vw,6rem)] font-black leading-[0.95] tracking-[-0.04em] text-foreground"
             >
               민대인
             </motion.h1>
@@ -114,6 +93,17 @@ export default function Hero() {
               ))}
             </ul>
           </div>
+
+          {/* Liquid Glass 3D */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, ease }}
+            className="relative -mx-6 h-[340px] sm:h-[420px] md:mx-0 md:h-[560px]"
+            aria-hidden
+          >
+            <SignalFieldGate reduced={reduced} />
+          </motion.div>
         </div>
 
         <motion.a
