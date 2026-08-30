@@ -85,7 +85,7 @@ export default function Hero() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: reduced ? 0 : 1.2 + i * 0.1 }}
-                  className="rounded-full border border-white/80 bg-white/70 px-3 py-1 text-xs font-medium text-foreground/80"
+                  className="glass glass-pill px-3 py-1 text-xs font-medium text-foreground/85"
                 >
                   {p.label}
                 </motion.li>

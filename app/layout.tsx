@@ -54,7 +54,12 @@ export default function RootLayout({
           content="프론트엔드 개발자 민대인입니다."
         />
       </head>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <div className="glass-bg" aria-hidden>
+          <span style={{ width: "34vw", height: "34vw", left: "38vw", top: "-10vw", background: "hsl(214 90% 70% / 0.5)" }} />
+          <span style={{ width: "30vw", height: "30vw", left: "10vw", bottom: "-8vw", background: "hsl(205 95% 65% / 0.4)" }} />
+          <span style={{ width: "26vw", height: "26vw", right: "18vw", bottom: "10vh", background: "hsl(214 84% 62% / 0.35)" }} />
+        </div>{children}</body>
       <Analytics />
     </html>
   );

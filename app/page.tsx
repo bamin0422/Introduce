@@ -9,7 +9,7 @@ import StackMarquee from "@web/components/StackMarquee";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen">
       <Nav />
       <Hero />
       <div className="mx-auto max-w-5xl space-y-28 px-6 pb-24 pt-8">

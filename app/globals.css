@@ -32,35 +32,37 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
+  html {
+    @apply bg-background;
   }
-  /* 유리가 굴절할 배경 — 흐린 단색 원 두 개, 그라데이션 없음 */
+  body {
+    @apply text-foreground;
+  }
+  /* 유리가 굴절할 배경 — 뒤에 색이 있어야 유리가 보인다. 흐린 단색 원들, GPU 레이어에 캐시 */
   body::before,
   body::after {
     content: "";
     position: fixed;
     z-index: -1;
     border-radius: 999px;
-    filter: blur(90px);
+    filter: blur(70px);
     pointer-events: none;
-    /* 블러 결과를 GPU 레이어에 캐시 — 스크롤마다 다시 계산하지 않는다 */
     will-change: transform;
     transform: translateZ(0);
   }
   body::before {
-    width: 46vw;
-    height: 46vw;
-    left: -12vw;
-    top: -14vw;
-    background: hsl(var(--blue) / 0.16);
+    width: 52vw;
+    height: 52vw;
+    left: -14vw;
+    top: -18vw;
+    background: hsl(var(--blue) / 0.42);
   }
   body::after {
-    width: 40vw;
-    height: 40vw;
-    right: -10vw;
-    bottom: -12vw;
-    background: hsl(var(--teal) / 0.18);
+    width: 48vw;
+    height: 48vw;
+    right: -12vw;
+    top: 28vh;
+    background: hsl(200 90% 60% / 0.4);
   }
 }
 
@@ -77,16 +79,50 @@ html {
   background: hsl(var(--blue) / 0.2);
 }
 /* ---------- Liquid Glass ---------- */
+.glass-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.glass-bg span {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(60px);
+  will-change: transform;
+  transform: translateZ(0);
+}
+:where(.glass) {
+  position: relative;
+}
 .glass {
-  background: rgba(255, 255, 255, 0.55);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.75);
+  /* 푸른 빛이 도는 유리 */
+  background: hsl(210 100% 96% / 0.38);
+  -webkit-backdrop-filter: blur(22px) saturate(190%);
+  backdrop-filter: blur(22px) saturate(190%);
+  border: 1px solid hsl(210 100% 92% / 0.8);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    inset 0 -1px 0 rgba(11, 31, 51, 0.04),
-    0 1px 2px rgba(11, 31, 51, 0.04),
-    0 18px 40px -24px rgba(11, 31, 51, 0.25);
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 hsl(214 84% 62% / 0.18),
+    inset 1px 0 0 rgba(255, 255, 255, 0.5),
+    inset -1px 0 0 rgba(255, 255, 255, 0.5),
+    0 1px 1px hsl(214 60% 30% / 0.06),
+    0 24px 48px -24px hsl(214 70% 35% / 0.4);
+}
+/* 유리 위쪽 반사광 — 단색 흰색을 반투명으로 얹는다 */
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.34);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 45%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 45%);
+}
+:where(.glass > *) {
+  position: relative;
 }
 .glass-pill {
   border-radius: 999px;
