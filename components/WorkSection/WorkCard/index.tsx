@@ -57,13 +57,13 @@ export function WorkCard({ workInfo }: Props) {
     <div className="space-y-8">
       <Reveal>
         <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-          <h3 className="flex items-center gap-3 font-display text-xl tracking-tight">
+          <h3 className="font-display text-xl tracking-tight">{workInfo.role}</h3>
+          <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
             {workInfo.role === "Frontend Developer" && (
-              <DaouLogo size="sm" />
+              <span className="glass glass-pill inline-flex items-center px-2.5 py-1">
+                <DaouLogo size="sm" />
+              </span>
             )}
-            {workInfo.role}
-          </h3>
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <span>{workInfo.title}</span>
             <span>·</span>
             <span>
