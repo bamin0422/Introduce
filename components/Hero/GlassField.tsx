@@ -147,7 +147,8 @@ function Panel({ position, rotation = [0, 0, 0], size, tint, screen, screenInset
   useFrame((_, dt) => {
     if (!ref.current) return;
     const target = hover ? 1.06 : 1;
-    ref.current.scale.lerp(new THREE.Vector3(target, target, target), Math.min(1, dt * 8));
+    const s = THREE.MathUtils.damp(ref.current.scale.x, target, 8, dt);
+    ref.current.scale.setScalar(s);
   });
   const body = (
     <group
@@ -164,7 +165,7 @@ function Panel({ position, rotation = [0, 0, 0], size, tint, screen, screenInset
         document.body.style.cursor = "";
       }}
     >
-      <RoundedBox args={[w, h, depth]} radius={Math.min(w, h) * 0.12} smoothness={6}>
+      <RoundedBox args={[w, h, depth]} radius={Math.min(w, h) * 0.12} smoothness={3}>
         <GlassMat tint={tint} />
       </RoundedBox>
       {tex && (
@@ -257,7 +258,7 @@ function Backdrop() {
 export default function GlassField({ reduced, offsetX = 0, scale = 1, active = true }: { reduced: boolean; offsetX?: number; scale?: number; active?: boolean }) {
   return (
     <Canvas
-      dpr={[1, 1.25]}
+      dpr={1}
       camera={{ position: [0, 0, 8.5], fov: 36 }}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance", stencil: false }}
       frameloop={reduced || !active ? "demand" : "always"}
@@ -265,7 +266,6 @@ export default function GlassField({ reduced, offsetX = 0, scale = 1, active = t
     >
       <ambientLight intensity={0.9} />
       <directionalLight position={[4, 6, 5]} intensity={1.6} color="#ffffff" />
-      <directionalLight position={[-5, -2, 3]} intensity={0.6} color={TEAL} />
       <group position={[offsetX, 0, 0]} scale={scale}>
         <Backdrop />
         <Rig reduced={reduced} />

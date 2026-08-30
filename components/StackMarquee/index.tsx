@@ -9,7 +9,7 @@ const STACK = [
 export default function StackMarquee() {
   const items = [...STACK, ...STACK];
   return (
-    <div className="marquee glass rounded-full py-3" aria-label="기술 스택">
+    <div className="marquee rounded-full border border-white/80 bg-white/70 py-3" aria-label="기술 스택">
       <ul className="marquee-track px-6">
         {items.map((t, i) => (
           <li

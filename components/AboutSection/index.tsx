@@ -22,8 +22,7 @@ const contacts = [
 export function AboutSection() {
   return (
     <section id="contact" className="scroll-mt-24 pb-8">
-        <p className="section-eyebrow">Contact</p>
-      <h2 className="section-title">같이 만들 일이 있다면 편하게 연락 주세요.</h2>
+      <h2 className="section-title">Contact</h2>
       <div className="flex flex-wrap gap-3">
         {contacts.map((contact) => (
           <Button key={contact.name} variant="outline" asChild>
