@@ -6,49 +6,13 @@ import {
   CardTitle,
 } from "@web/components/ui/card";
 import { Badge } from "@web/components/ui/badge";
+import { ParLabel, ParList } from "@web/components/ui/par";
 import { Button } from "@web/components/ui/button";
 import { ExternalLink } from "lucide-react";
 import { ProjectInfo } from "../types";
 
 export interface Props {
   projectInfo: ProjectInfo;
-}
-
-const PAR_LABEL: Record<"P" | "A" | "R", string> = {
-  P: "P | 문제 상황",
-  A: "A | 해결 방안",
-  R: "R | 적용 및 검증",
-};
-
-const PAR_TONE: Record<"P" | "A" | "R", string> = {
-  P: "text-rose-600 dark:text-rose-400",
-  A: "text-blue-600 dark:text-blue-400",
-  R: "text-emerald-600 dark:text-emerald-400",
-};
-
-function ParLabel({ kind }: { kind: "P" | "A" | "R" }) {
-  return (
-    <h4
-      className={`text-xs font-semibold tracking-wide uppercase mb-2 ${PAR_TONE[kind]}`}
-    >
-      {PAR_LABEL[kind]}
-    </h4>
-  );
-}
-
-function ParList({ items }: { items: string[] }) {
-  return (
-    <ul className="space-y-1">
-      {items.map((item, i) => (
-        <li
-          key={i}
-          className="text-sm text-muted-foreground leading-relaxed pl-4 relative before:content-['·'] before:absolute before:left-0 before:text-muted-foreground/60"
-        >
-          {item}
-        </li>
-      ))}
-    </ul>
-  );
 }
 
 export function ProjectCard({ projectInfo }: Props) {

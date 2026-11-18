@@ -86,19 +86,19 @@ html {
   }
 }
 .font-display {
-  font-family: var(--font-body), sans-serif;
+  font-family: inherit;
   font-weight: 800;
   letter-spacing: -0.02em;
 }
 .section-eyebrow {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: hsl(var(--blue));
   margin-bottom: 0.5rem;
 }
 .section-title {
-  font-family: var(--font-body), sans-serif;
-  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-family: inherit;
+  font-size: clamp(1.6rem, 3.2vw, 2.5rem);
   line-height: 1.15;
   letter-spacing: -0.03em;
   font-weight: 800;

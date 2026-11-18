@@ -1,78 +1,65 @@
 import { ArrowDown } from "lucide-react";
 
-const TAGLINE = "Learn once, write anywhere.";
+/** 영상 바탕색. 히어로 바탕을 같은 색으로 깔아 영상 테두리가 보이지 않게 한다 */
+const VIDEO_BG = "#eceeef";
 
-const STATS = [
-  { value: "3,498", label: "2026년 커밋" },
-  { value: "552", label: "처리한 이슈" },
-  { value: "28", label: "직접 만든 AI 스킬" },
-  { value: "1~2분", label: "AI 리뷰 응답 시간" },
-];
-
-/** 첫 화면은 JS 없이도 바로 보이도록 진입 애니메이션 없이 정적으로 그린다. */
+/**
+ * 첫 화면. 영상은 원본 비율 그대로(object-contain) 히어로 오른쪽 전체 높이에 두고,
+ * 글자는 JS 없이도 바로 보이게 정적으로 그린다.
+ */
 export default function Hero() {
   return (
-    <section id="home" className="relative" aria-label="소개">
-      <div className="mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-between px-6 pb-10 pt-8">
-        <header className="flex items-center justify-between text-sm text-muted-foreground">
-          <span className="font-display text-foreground">Daein Min</span>
-          <span className="hidden sm:inline">Frontend Developer · Seoul</span>
-        </header>
+    <section id="home" className="relative isolate overflow-hidden" style={{ background: VIDEO_BG }} aria-label="소개">
+      <video
+        src="/images/hero.mp4"
+        poster="/images/hero-poster.webp"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden
+        className="absolute inset-x-0 bottom-14 -z-10 h-[34%] w-full object-contain md:inset-y-0 md:left-[40%] md:right-0 md:h-full md:w-auto"
+      />
+      <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-background to-transparent" />
 
-        <div className="grid items-center gap-10 py-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-6">
-          <div>
-            <div className="glass glass-pill mb-6 inline-flex items-center gap-3 py-1.5 pl-1.5 pr-4 shadow-sm">
-              <img
-                src="/introduce-sm.png"
-                alt="민대인 프로필 사진"
-                width={40}
-                height={40}
-                className="h-10 w-10 rounded-full bg-white object-cover object-top"
-              />
-              <span className="text-xs font-semibold text-foreground">다우기술 · Frontend Developer</span>
-            </div>
-
-            <p className="font-display text-[clamp(1.4rem,3vw,2.1rem)] leading-[1.15] text-primary">
-              {TAGLINE}
-            </p>
-            <h1 className="mt-3 text-[clamp(3.4rem,8vw,6rem)] font-extrabold leading-[0.95] tracking-[-0.04em] text-foreground">
-              민대인
-            </h1>
-            <p className="mt-6 max-w-lg text-[15px] leading-relaxed text-muted-foreground md:text-base">
-              그룹웨어 다우오피스의 프론트엔드를 만들고 운영합니다.
-              보안과 안정성은 재현과 실측으로 챙기고, 반복되는 일은 AI 도구로 바꿉니다.
-            </p>
-            <dl className="mt-8 grid max-w-lg grid-cols-2 gap-3 sm:grid-cols-4">
-              {STATS.map((s) => (
-                <div key={s.label} className="glass rounded-2xl px-4 py-3">
-                  <dt className="text-[11px] text-muted-foreground">{s.label}</dt>
-                  <dd className="mt-1 text-lg font-extrabold tracking-tight text-foreground">{s.value}</dd>
-                </div>
-              ))}
-            </dl>
+      <div className="mx-auto flex min-h-[100svh] max-w-5xl flex-col justify-between px-6 pb-10 pt-28 md:justify-center md:pt-16">
+        <div className="max-w-xl">
+          <div className="mb-6 inline-flex items-center gap-3 rounded-full bg-card py-1.5 pl-1.5 pr-4">
+            <img
+              src="/introduce-sm.png"
+              alt="민대인 프로필 사진"
+              width={36}
+              height={36}
+              className="h-9 w-9 rounded-full bg-white object-cover object-top"
+            />
+            <span className="text-[13px] font-semibold text-foreground">다우기술 · Frontend Developer</span>
           </div>
 
-          <div className="overflow-hidden rounded-3xl bg-card shadow-sm">
-            {/* 포스터가 먼저 보이고, 영상은 받아지는 대로 이어서 재생된다 */}
-            <video
-              src="/images/hero.mp4"
-              poster="/images/hero-poster.webp"
-              width={1280}
-              height={720}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-hidden
-              className="aspect-video h-auto w-full object-cover"
-            />
+          <p className="text-[clamp(1.25rem,2.6vw,1.75rem)] font-bold tracking-tight text-primary">
+            Learn once, write anywhere.
+          </p>
+          <h1 className="mt-2 text-[clamp(3rem,7vw,5.25rem)] font-extrabold leading-none tracking-[-0.04em] text-foreground">
+            민대인
+          </h1>
+          <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
+            그룹웨어 다우오피스의 프론트엔드를 만들고 운영합니다.{" "}
+            <br className="hidden sm:block" />
+            보안과 안정성은 재현과 실측으로 챙기고, 반복되는 일은 AI 도구로 바꿉니다.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-2">
+            <a href="#work" className="rounded-xl bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground transition-colors hover:bg-[#2272eb]">
+              경력 보기
+            </a>
+            <a href="#contact" className="rounded-xl bg-card px-5 py-3 text-[15px] font-semibold text-foreground transition-colors hover:bg-muted">
+              연락하기
+            </a>
           </div>
         </div>
 
         <a
-          href="#skills"
-          className="group inline-flex w-fit items-center gap-2 text-xs font-semibold text-muted-foreground hover:text-foreground"
+          href="#overview"
+          className="group mt-10 inline-flex w-fit items-center gap-2 text-xs font-semibold text-muted-foreground hover:text-foreground md:absolute md:bottom-10"
         >
           <ArrowDown className="h-3.5 w-3.5 transition-transform group-hover:translate-y-0.5 motion-safe:animate-bounce" />
           아래로

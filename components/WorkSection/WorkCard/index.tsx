@@ -6,50 +6,15 @@ import {
   CardTitle,
 } from "@web/components/ui/card";
 import { Badge } from "@web/components/ui/badge";
+import { ParLabel, ParList } from "@web/components/ui/par";
 import { WorkInfo } from "../types";
 import Reveal from "@web/components/motion/Reveal";
 import TiltCard from "@web/components/motion/TiltCard";
 import DaouLogo from "@web/components/DaouLogo";
+import { Viz } from "@web/components/viz";
 
 export interface Props {
   workInfo: WorkInfo;
-}
-
-const PAR_LABEL: Record<"P" | "A" | "R", string> = {
-  P: "P | 문제 상황",
-  A: "A | 해결 방안",
-  R: "R | 적용 및 검증",
-};
-
-const PAR_TONE: Record<"P" | "A" | "R", string> = {
-  P: "text-rose-600 dark:text-rose-400",
-  A: "text-blue-600 dark:text-blue-400",
-  R: "text-emerald-600 dark:text-emerald-400",
-};
-
-function ParLabel({ kind }: { kind: "P" | "A" | "R" }) {
-  return (
-    <h4
-      className={`text-xs font-semibold tracking-wide uppercase mb-2 ${PAR_TONE[kind]}`}
-    >
-      {PAR_LABEL[kind]}
-    </h4>
-  );
-}
-
-function ParList({ items }: { items: string[] }) {
-  return (
-    <ul className="space-y-1.5">
-      {items.map((item, i) => (
-        <li
-          key={i}
-          className="text-sm text-muted-foreground leading-relaxed pl-4 relative before:content-['·'] before:absolute before:left-0 before:text-muted-foreground/60"
-        >
-          {item}
-        </li>
-      ))}
-    </ul>
-  );
 }
 
 export function WorkCard({ workInfo }: Props) {
@@ -96,6 +61,13 @@ export function WorkCard({ workInfo }: Props) {
                 <ParLabel kind="R" />
                 <ParList items={detail.results} />
               </div>
+              {detail.visuals && (
+                <div className="grid gap-3 md:grid-cols-2">
+                  {detail.visuals.map((v) => (
+                    <Viz key={v.title} v={v} className={detail.visuals!.length === 1 || v.kind === "flow" ? "md:col-span-2" : undefined} />
+                  ))}
+                </div>
+              )}
             </CardContent>
             <CardFooter className="flex-wrap gap-1.5">
               {detail.techStack.split(", ").map((tech) => (

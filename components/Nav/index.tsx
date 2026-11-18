@@ -1,76 +1,68 @@
 "use client";
-import { motion, useScroll, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
 import { cn } from "@web/lib/utils";
 
 const SECTIONS = [
-  { id: "skills", label: "Skills" },
-  { id: "work", label: "Work" },
-  { id: "project", label: "Projects" },
-  { id: "contact", label: "Contact" },
+  { id: "overview", label: "2026" },
+  { id: "skills", label: "일하는 방식" },
+  { id: "work", label: "경력" },
+  { id: "project", label: "프로젝트" },
 ];
 
-/** 상단 고정 네비 — 스크롤 진행 바 + 현재 섹션 하이라이트 */
+/** 항상 보이는 상단 메뉴. 현재 보고 있는 섹션만 진하게 표시한다 */
 export default function Nav() {
-  const { scrollYProgress } = useScroll();
-  const width = useSpring(scrollYProgress, { stiffness: 120, damping: 24 });
-  const [active, setActive] = useState<string>("");
-  const [visible, setVisible] = useState(false);
+  const [active, setActive] = useState("");
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.6);
+    const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
     const els = SECTIONS.map((s) => document.getElementById(s.id)).filter(Boolean) as HTMLElement[];
     const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => e.isIntersecting && setActive(e.target.id));
-      },
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
       { rootMargin: "-40% 0px -55% 0px" }
     );
     els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      io.disconnect();
+    };
   }, []);
 
   return (
-    <div
+    <header
       className={cn(
-        "fixed inset-x-0 top-0 z-40 transition-transform duration-300",
-        visible ? "translate-y-0" : "-translate-y-full"
+        "fixed inset-x-0 top-0 z-40 bg-card transition-shadow",
+        scrolled && "shadow-[0_1px_0_hsl(var(--border))]"
       )}
     >
-      <div className="px-4 pt-3">
-        <nav className="glass glass-pill shadow-sm mx-auto flex max-w-3xl items-center justify-between py-2 pl-5 pr-2">
-          <a href="#home" className="font-display text-sm tracking-tight">
-            Daein Min
-          </a>
-          <ul className="flex gap-1 text-xs font-semibold">
-            {SECTIONS.map((s) => (
-              <li key={s.id}>
-                <a
-                  href={`#${s.id}`}
-                  className={cn(
-                    "rounded-full px-3 py-1.5 transition-colors",
-                    active === s.id
-                      ? "bg-foreground text-white"
-                      : "text-muted-foreground hover:text-foreground"
-                  )}
-                >
-                  {s.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-      <motion.div
-        style={{ scaleX: width, transformOrigin: "0 0" }}
-        className="mt-2 h-[2px] bg-primary"
-      />
-    </div>
+      <nav className="mx-auto flex h-16 max-w-5xl items-center gap-6 px-6">
+        <a href="#home" className="text-[17px] font-bold tracking-tight text-foreground">
+          민대인
+        </a>
+        <ul className="flex flex-1 gap-1 overflow-x-auto text-[15px] sm:gap-2">
+          {SECTIONS.map((s) => (
+            <li key={s.id} className="shrink-0">
+              <a
+                href={`#${s.id}`}
+                className={cn(
+                  "rounded-lg px-2.5 py-2 transition-colors hover:bg-muted",
+                  active === s.id ? "font-semibold text-foreground" : "text-muted-foreground"
+                )}
+              >
+                {s.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a
+          href="#contact"
+          className="hidden shrink-0 rounded-lg bg-primary px-3.5 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-[#2272eb] sm:inline-block"
+        >
+          연락하기
+        </a>
+      </nav>
+    </header>
   );
 }

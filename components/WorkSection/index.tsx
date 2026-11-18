@@ -21,19 +21,23 @@ export function WorkSection() {
           href="https://daouoffice.gitbook.io/4.0"
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative mb-12 block overflow-hidden rounded-2xl border border-white/70"
+          className="glass group mb-12 grid overflow-hidden rounded-[var(--radius)] md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]"
         >
           <img
             src="/images/daouoffice-40-banner.png"
             alt="다우오피스 4.0 출시"
-            className="h-40 w-full object-cover object-right transition-transform duration-700 group-hover:scale-[1.02] sm:h-52"
+            width={1200}
+            height={630}
+            loading="lazy"
+            className="aspect-[1200/630] h-auto w-full object-cover"
           />
-          <div className="glass absolute inset-y-4 left-4 flex max-w-md flex-col justify-center gap-3 rounded-xl p-5 sm:inset-y-6 sm:left-6 sm:p-6">
+          <div className="flex flex-col justify-center gap-3 p-6 md:p-8">
             <DaouLogo />
-            <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
+            <p className="text-sm leading-relaxed text-muted-foreground">
               6년 만의 대규모 업데이트. 모노레포 아키텍처부터 대시보드 가젯·네비게이션까지
               프론트엔드 핵심 축을 설계하고 v4.0.0 ~ v4.2.2를 릴리스했습니다.
             </p>
+            <span className="text-sm font-semibold text-primary group-hover:underline">출시 안내 보기 →</span>
           </div>
         </a>
       </Reveal>

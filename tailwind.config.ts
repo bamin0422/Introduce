@@ -11,8 +11,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-body)", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "var(--font-body)", "sans-serif"],
+        sans: ["\"Wanted Sans Variable\"", "\"Wanted Sans\"", "-apple-system", "\"Apple SD Gothic Neo\"", "sans-serif"],
+        display: ["var(--font-display)", "sans-serif"],
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       colors: {

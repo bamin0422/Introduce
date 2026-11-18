@@ -1,3 +1,5 @@
+import type { Visual } from "@web/components/viz";
+
 export interface ResumeData {
   personalInfo: PersonalInfo;
   summary: string;
@@ -31,6 +33,8 @@ export interface ProjectDetail {
   actions: string[];
   results: string[];
   techStack: string;
+  /** 본문 아래에 붙는 도표 */
+  visuals?: Visual[];
 }
 
 export interface Project {
@@ -120,6 +124,7 @@ export const resumeData: ResumeData = {
             "배포 전에 CDP로 응답 헤더를 주입해 CSP 효과를 미리 재는 검증법을 팀에 남겼습니다.",
           ],
           techStack: "DOMPurify, CSP, Chrome DevTools Protocol, Grafana Loki, Next.js, esbuild",
+          visuals: [{"kind": "stack", "title": "운영 접근 로그 4xx 43,083건의 구성", "items": [{"label": "404 · 스캐너 정찰(.env 등)", "value": 80.5}, {"label": "그 밖의 404", "value": 18.9}, {"label": "404가 아닌 4xx", "value": 0.6}]}, {"kind": "flow", "title": "보안 이슈를 방어로 옮긴 순서", "steps": [{"label": "이슈 259건 수집", "sub": "KISA·모의해킹·감사 등"}, {"label": "소스 12,542개 대조"}, {"label": "운영 로그 전수조사"}, {"label": "우선순위 결정", "kind": "decision"}, {"label": "CSP·DOMPurify·콘솔 차단", "kind": "end"}]}],
         },
         {
           title: "레거시 화면 오류 해소와 운영 장애 원인 규명",
@@ -134,6 +139,7 @@ export const resumeData: ResumeData = {
             "19자리 숫자가 재직렬화로 오염되는 잠복 결함도 함께 찾아냈습니다.",
           ],
           techStack: "JavaScript, Playwright, Grafana, Backbone, Next.js",
+          visuals: [{"kind": "flow", "title": "오류 화면이 생기던 경로와 바꾼 설계", "steps": [{"label": "서버 200 정상 응답"}, {"label": "렌더 가드: 빈 화면인가?", "sub": "세 경로에서 오판", "kind": "decision"}, {"label": "기존: 공통 500으로 이동", "sub": "하루 3,399건"}, {"label": "변경: 자동 이동 경로 제거", "kind": "end"}]}],
         },
         {
           title: "신규 웹메일 품질 안정화와 릴리스 QC",
@@ -149,6 +155,7 @@ export const resumeData: ResumeData = {
             "develop에서 죽어 있던 메일 목록 테스트 126건을 되살렸습니다.",
           ],
           techStack: "React, TypeScript, Radix UI, TanStack Query, Vitest",
+          visuals: [{"kind": "bars", "title": "처리한 결함·QC 건수", "unit": "건", "items": [{"label": "웹메일 결함", "value": 44}, {"label": "4.6.0.0 QC", "value": 38}, {"label": "4.5.5.0 QC", "value": 25}]}, {"kind": "flow", "title": "첨부 드롭 오버레이 고착 — 세 번에 걸친 원인", "steps": [{"label": "1차", "sub": "유휴 타이머가 발화 못 함"}, {"label": "2차", "sub": "레거시가 drop 전파 차단"}, {"label": "3차", "sub": "Chrome relatedTarget null"}, {"label": "실제 드래그 로그로 확정", "kind": "end"}]}],
         },
         {
           title: "다우오피스 4.0 프론트엔드 아키텍처와 대시보드",
@@ -178,6 +185,7 @@ export const resumeData: ResumeData = {
             "설치 패키지와 사내 공유 글로 팀원도 같은 도구를 바로 쓰게 했습니다.",
           ],
           techStack: "Claude Code (Skills, Hooks), Sentry MCP, Jira·Bitbucket REST API, Playwright, GitHub Actions",
+          visuals: [{"kind": "flow", "title": "퇴근 뒤 무인 이슈 처리 흐름", "steps": [{"label": "'퇴근' 입력"}, {"label": "훅이 에이전트 2개 실행", "sub": "리오픈 · 다음 버전"}, {"label": "분석·수정·검증"}, {"label": "근거가 확실한가?", "kind": "decision"}, {"label": "PR 생성 또는 보고만", "sub": "결과는 메일로", "kind": "end"}]}],
         },
         {
           title: "AI PR 코드리뷰 시스템",
@@ -193,6 +201,7 @@ export const resumeData: ResumeData = {
             "반복되는 컨벤션 지적이 자동화돼 리뷰어가 로직에 집중할 수 있게 됐습니다.",
           ],
           techStack: "NestJS, TypeScript, Claude Code CLI, Ollama, Supabase, React 19, TanStack Query",
+          visuals: [{"kind": "compare", "title": "PR 리뷰 응답 시간", "before": {"value": "4~8시간", "label": "사람 리뷰 대기"}, "after": {"value": "1~2분", "label": "AI 리뷰"}}, {"kind": "flow", "title": "리뷰 파이프라인", "steps": [{"label": "Bitbucket 웹훅"}, {"label": "Claude Code 리뷰", "sub": "컨벤션·과거 리뷰 참고"}, {"label": "영향도 50점 초과?", "sub": "7축 100점", "kind": "decision"}, {"label": "인라인 댓글 · 머지 보류", "kind": "end"}]}],
         },
         {
           title: "기획자용 다우오피스 디자인 MCP",
@@ -218,6 +227,7 @@ export const resumeData: ResumeData = {
             "고객사별로 걸러 보며 CS 인입 건의 원인을 빠르게 찾게 됐습니다.",
           ],
           techStack: "@sentry/nextjs, @sentry/react, Next.js, React ErrorBoundary",
+          visuals: [{"kind": "flow", "title": "수집 기준을 바꾼 뒤의 흐름", "steps": [{"label": "모든 JS 오류"}, {"label": "흰 화면·API 5xx인가?", "kind": "decision"}, {"label": "고객사 태그 · fingerprint"}, {"label": "실제 장애만 대시보드에", "kind": "end"}]}],
         },
         {
           title: "토큰 갱신 경쟁 상태로 생긴 흰 화면 해소",
@@ -254,6 +264,7 @@ export const resumeData: ResumeData = {
             "배포 뒤 구버전이 남는 문제가 사라졌습니다.",
           ],
           techStack: "Chrome DevTools, Nginx, Turborepo, Next.js standalone",
+          visuals: [{"kind": "bars", "title": "모든 화면에 실리던 리소스 크기", "unit": "MB", "items": [{"label": "통합설정 iframe 이중 로드(제거)", "value": 6.35}, {"label": "ESS ExtJS", "value": 5.8}, {"label": "레거시 CSS 9개", "value": 2.45, "display": "2.4MB"}, {"label": "닫힌 다이얼로그 청크", "value": 2.3}, {"label": "Dext5", "value": 0.35}]}],
         },
         {
           title: "VOC 레이더 — 고객사 이슈 분석 대시보드",
@@ -265,6 +276,7 @@ export const resumeData: ResumeData = {
           ],
           results: ["고객사 1,765곳을 자동으로 추출하고 위험 신호가 있는 54곳을 찾아 사내에 공개했습니다."],
           techStack: "Jira REST API, Claude Code, Vanilla JS, nginx, Docker, Coolify",
+          visuals: [{"kind": "flow", "title": "이슈에서 위험 고객사를 찾는 과정", "steps": [{"label": "Jira 이슈 19,911건"}, {"label": "고객사 1,765곳 추출", "sub": "표기 변형 정규화"}, {"label": "장애·재발 이력 표시"}, {"label": "위험 신호 54곳", "kind": "end"}]}],
         },
       ],
     },

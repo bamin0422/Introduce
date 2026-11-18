@@ -1,13 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Noto_Sans_KR, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 
-const body = Noto_Sans_KR({
-  subsets: ["latin"],
-  weight: ["400", "500", "700", "800"],
-  variable: "--font-body",
-});
 const mono = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
@@ -37,8 +32,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" className={`${body.variable} ${mono.variable}`}>
+    <html lang="ko" className={mono.variable}>
       <head>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css"
+        />
         <meta property="og:title" content="민대인 포트폴리오" />
         <meta property="og:url" content="https://bamin-dev.pe.kr" />
         <meta property="og:type" content="website" />

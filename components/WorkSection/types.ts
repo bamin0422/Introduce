@@ -1,3 +1,5 @@
+import type { Visual } from "@web/components/viz";
+
 export interface WorkInfo {
   title: string;
   role: string;
@@ -12,4 +14,5 @@ export interface WorkDetailInfo {
   actions: string[];
   results: string[];
   techStack: string;
+  visuals?: Visual[];
 }
