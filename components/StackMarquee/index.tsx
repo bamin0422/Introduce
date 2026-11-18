@@ -1,6 +1,6 @@
 const STACK = [
   "React", "Next.js", "TypeScript", "Tailwind CSS", "Jotai", "TanStack Query",
-  "Storybook", "Turborepo", "pnpm", "Electron", "Three.js", "Framer Motion",
+  "Storybook", "Turborepo", "pnpm", "Electron", "Framer Motion",
   "Sentry", "Nginx", "Docker", "Kotlin", "Android", "KMP", "Claude Code", "MCP",
   "Playwright", "NestJS", "Supabase", "Firebase",
 ];

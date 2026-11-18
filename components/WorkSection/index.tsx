@@ -14,7 +14,7 @@ export function WorkSection() {
     <section id="work" className="scroll-mt-24">
       <Reveal>
         <p className="section-eyebrow">Work · 다우기술</p>
-        <h2 className="section-title">문제 → 해결 → 검증으로 적어 둔 경력</h2>
+        <h2 className="section-title">문제, 해결, 결과로 정리한 경력</h2>
       </Reveal>
       <Reveal>
         <a

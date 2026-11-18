@@ -2,13 +2,11 @@ import { ArrowDown } from "lucide-react";
 
 const TAGLINE = "Learn once, write anywhere.";
 
-const PLATFORMS = [
-  "React · Next.js",
-  "Design System",
-  "Electron",
-  "WebView Bridge",
-  "MCP · Claude Code",
-  "Android",
+const STATS = [
+  { value: "3,498", label: "2026년 커밋" },
+  { value: "552", label: "처리한 이슈" },
+  { value: "28", label: "직접 만든 AI 스킬" },
+  { value: "1~2분", label: "AI 리뷰 응답 시간" },
 ];
 
 /** 첫 화면은 JS 없이도 바로 보이도록 진입 애니메이션 없이 정적으로 그린다. */
@@ -41,18 +39,17 @@ export default function Hero() {
               민대인
             </h1>
             <p className="mt-6 max-w-lg text-[15px] leading-relaxed text-muted-foreground md:text-base">
-              React·Next.js로 기업용 SaaS 그룹웨어의 프론트엔드를 설계하고
-              운영합니다. 모노레포와 디자인 시스템, SSR부터 Electron 데스크톱,
-              WebView 브릿지, MCP·Claude Code 스킬까지 — 한 번 익힌 원칙을
-              어디서든 같은 밀도로 씁니다.
+              그룹웨어 다우오피스의 프론트엔드를 만들고 운영합니다.
+              보안과 안정성은 재현과 실측으로 챙기고, 반복되는 일은 AI 도구로 바꿉니다.
             </p>
-            <ul className="mt-6 flex flex-wrap gap-2" aria-label="다뤄온 플랫폼">
-              {PLATFORMS.map((p) => (
-                <li key={p} className="glass glass-pill px-3 py-1 text-xs font-medium text-foreground/80">
-                  {p}
-                </li>
+            <dl className="mt-8 grid max-w-lg grid-cols-2 gap-3 sm:grid-cols-4">
+              {STATS.map((s) => (
+                <div key={s.label} className="glass rounded-2xl px-4 py-3">
+                  <dt className="text-[11px] text-muted-foreground">{s.label}</dt>
+                  <dd className="mt-1 text-lg font-extrabold tracking-tight text-foreground">{s.value}</dd>
+                </div>
               ))}
-            </ul>
+            </dl>
           </div>
 
           <div className="overflow-hidden rounded-3xl bg-card shadow-sm">
