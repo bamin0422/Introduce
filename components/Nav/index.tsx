@@ -44,7 +44,7 @@ export default function Nav() {
       )}
     >
       <div className="px-4 pt-3">
-        <nav className="glass glass-pill mx-auto flex max-w-3xl items-center justify-between py-2 pl-5 pr-2">
+        <nav className="glass glass-pill shadow-sm mx-auto flex max-w-3xl items-center justify-between py-2 pl-5 pr-2">
           <a href="#home" className="font-display text-sm tracking-tight">
             Daein Min
           </a>

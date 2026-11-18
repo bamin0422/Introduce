@@ -4,27 +4,24 @@
 
 @layer base {
   :root {
-    /* 블루 → 그린 팔레트 */
-    --background: 195 40% 98%;
-    --foreground: 210 60% 12%;
+    /* 밝은 회색 바탕 + 흰 카드, 파랑 강조 */
+    --background: 210 17% 96%;
+    --foreground: 220 21% 13%;
     --card: 0 0% 100%;
-    --card-foreground: 210 60% 12%;
-    --primary: 214 84% 52%;
+    --card-foreground: 220 21% 13%;
+    --primary: 214 92% 58%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 196 45% 93%;
-    --secondary-foreground: 210 50% 18%;
-    --muted: 195 35% 95%;
-    --muted-foreground: 210 18% 42%;
-    --accent: 172 66% 92%;
-    --accent-foreground: 172 70% 28%;
-    --border: 200 30% 88%;
-    --input: 200 30% 88%;
-    --ring: 172 70% 40%;
-    --radius: 0.9rem;
-    --teal: 172 70% 40%;
-    --teal-deep: 178 72% 30%;
-    --blue: 214 84% 52%;
-    --blue-deep: 218 80% 38%;
+    --secondary: 214 100% 96%;
+    --secondary-foreground: 214 80% 40%;
+    --muted: 210 17% 96%;
+    --muted-foreground: 215 12% 38%;
+    --accent: 214 100% 96%;
+    --accent-foreground: 214 80% 40%;
+    --border: 210 14% 91%;
+    --input: 210 14% 91%;
+    --ring: 214 92% 58%;
+    --radius: 1.25rem;
+    --blue: 214 92% 58%;
   }
 }
 
@@ -37,32 +34,6 @@
   }
   body {
     @apply text-foreground;
-  }
-  /* 유리가 굴절할 배경 — 뒤에 색이 있어야 유리가 보인다. 흐린 단색 원들, GPU 레이어에 캐시 */
-  body::before,
-  body::after {
-    content: "";
-    position: fixed;
-    z-index: -1;
-    border-radius: 999px;
-    filter: blur(70px);
-    pointer-events: none;
-    will-change: transform;
-    transform: translateZ(0);
-  }
-  body::before {
-    width: 52vw;
-    height: 52vw;
-    left: -14vw;
-    top: -18vw;
-    background: hsl(var(--blue) / 0.42);
-  }
-  body::after {
-    width: 48vw;
-    height: 48vw;
-    right: -12vw;
-    top: 28vh;
-    background: hsl(200 90% 60% / 0.4);
   }
 }
 
@@ -78,51 +49,10 @@ html {
 ::selection {
   background: hsl(var(--blue) / 0.2);
 }
-/* ---------- Liquid Glass ---------- */
-.glass-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-}
-.glass-bg span {
-  position: absolute;
-  border-radius: 999px;
-  filter: blur(60px);
-  will-change: transform;
-  transform: translateZ(0);
-}
-:where(.glass) {
-  position: relative;
-}
+/* ---------- 표면 ----------
+   흰 카드 한 장. 그림자·블러 없이 바탕과의 명도 차로만 구분한다. */
 .glass {
-  /* 푸른 빛이 도는 유리 */
-  background: hsl(210 100% 96% / 0.38);
-  -webkit-backdrop-filter: blur(22px) saturate(190%);
-  backdrop-filter: blur(22px) saturate(190%);
-  border: 1px solid hsl(210 100% 92% / 0.8);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -1px 0 hsl(214 84% 62% / 0.18),
-    inset 1px 0 0 rgba(255, 255, 255, 0.5),
-    inset -1px 0 0 rgba(255, 255, 255, 0.5),
-    0 1px 1px hsl(214 60% 30% / 0.06),
-    0 24px 48px -24px hsl(214 70% 35% / 0.4);
-}
-/* 유리 위쪽 반사광 — 단색 흰색을 반투명으로 얹는다 */
-.glass::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background: rgba(255, 255, 255, 0.34);
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 45%);
-  mask-image: linear-gradient(to bottom, #000 0%, transparent 45%);
-}
-:where(.glass > *) {
-  position: relative;
+  background: hsl(var(--card));
 }
 .glass-pill {
   border-radius: 999px;
@@ -156,8 +86,9 @@ html {
   }
 }
 .font-display {
-  font-family: var(--font-display), var(--font-body), sans-serif;
-  font-weight: 700;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 .section-eyebrow {
   font-size: 13px;
@@ -166,57 +97,25 @@ html {
   margin-bottom: 0.5rem;
 }
 .section-title {
-  font-family: var(--font-display), var(--font-body), sans-serif;
+  font-family: var(--font-body), sans-serif;
   font-size: clamp(1.5rem, 3vw, 2.1rem);
   line-height: 1.15;
-  letter-spacing: -0.02em;
-  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-weight: 800;
   margin-bottom: 2rem;
   max-width: 34ch;
 }
 
-/* ---------- 틸트 · 스포트라이트 카드 ---------- */
+/* ---------- 카드 호버 ---------- */
 .tilt-card {
-  --mx: 50%;
-  --my: 50%;
-  --rx: 0deg;
-  --ry: 0deg;
-  position: relative;
-  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
-  transition: transform 180ms ease;
-  will-change: transform;
+  transition: transform 200ms ease;
 }
 .tilt-card > * {
-  position: relative;
   height: 100%;
 }
-.tilt-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 240ms ease;
-  /* 유리 표면의 하이라이트 — 커서를 따라가는 흰 반사광 */
-  background: radial-gradient(
-    280px circle at var(--mx) var(--my),
-    rgba(255, 255, 255, 0.55),
-    transparent 60%
-  );
-}
-@media (hover: hover) {
-  .tilt-card:hover::after {
-    opacity: 1;
-  }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .tilt-card:hover {
-    z-index: 1;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .tilt-card {
-    transform: none !important;
-    transition: none;
+    transform: translateY(-2px);
   }
 }
 
@@ -253,7 +152,7 @@ html {
   top: 0.5rem;
   bottom: 0.5rem;
   width: 1px;
-  background: hsl(var(--blue) / 0.35);
+  background: hsl(var(--border));
 }
 .timeline-item {
   position: relative;
