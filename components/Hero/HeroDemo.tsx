@@ -66,13 +66,13 @@ export default function HeroDemo() {
           <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
           <span className="ml-3 rounded-md bg-muted px-2 py-0.5 font-mono text-[11px] text-muted-foreground">sanitizeMail.ts</span>
         </div>
-        <pre className="overflow-hidden px-4 py-4 font-mono text-[11px] leading-[1.75] sm:text-[13px]">
+        <pre className="overflow-hidden px-3 py-4 font-mono text-[10.5px] leading-[1.75] sm:px-4 sm:text-[13px]">
           {CODE.map((line, i) => (
             <div
               key={i}
               className={cn("flex transition-all duration-300", on(i * LINE_GAP) ? "opacity-100" : "translate-x-1 opacity-0")}
             >
-              <span className="mr-4 w-4 shrink-0 text-right text-[#b0b8c1]">{i + 1}</span>
+              <span className="mr-3 w-3 shrink-0 text-right text-[#b0b8c1] sm:mr-4 sm:w-4">{i + 1}</span>
               <code className={cn("whitespace-pre text-foreground", i === 4 && on(T_REVIEW) && "rounded bg-secondary")}>
                 {line.map(([text, cls], k) => (
                   <span key={k} className={cls}>
