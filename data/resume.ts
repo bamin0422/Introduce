@@ -59,7 +59,7 @@ export const resumeData: ResumeData = {
     title: "Frontend Developer",
   },
   summary:
-    "Learn once, write anywhere. 한 번 익힌 원칙을 웹, 데스크톱, 모바일 어디서든 같은 밀도로 씁니다. 다우기술에서 그룹웨어 다우오피스의 프론트엔드를 설계하고 운영하며, 2026년에는 커밋 3,498건과 이슈 552건을 처리했습니다. 웹 보안 방어, 레거시 화면 안정화, 운영 장애 원인 규명을 맡았고, Claude Code 스킬 28개와 무인 이슈 처리 자동화를 만들어 팀이 일하는 방식을 바꿨습니다. 추정하지 않고 재현과 실측으로 원인을 확정하는 것을 원칙으로 삼습니다.",
+    "Learn once, write anywhere. 한 번 익힌 원칙은 웹이든 데스크톱이든 모바일이든 같은 밀도로 씁니다. 다우기술에서 그룹웨어 다우오피스의 프론트엔드를 설계하고 운영합니다. 2026년에는 커밋 3,498건과 이슈 552건을 처리했습니다. 맡은 일은 웹 보안 방어, 레거시 화면 안정화, 운영 장애 원인 규명이고, Claude Code 스킬 28개와 무인 이슈 처리 자동화를 만들어 팀이 일하는 방식도 바꿨습니다. 원인은 추정하지 않고 재현과 실측으로 확정합니다.",
   skills: [
     {
       category: "Frontend Core",
@@ -120,11 +120,11 @@ export const resumeData: ResumeData = {
             "운영 콘솔의 민감정보 노출은 파일 67개를 고치는 대신 빌드 단계(removeConsole, esbuild banner)에서 전역으로 막았습니다.",
           ],
           results: [
-            "보고서가 조직 보안 우선순위의 근거가 되어 후속 방어 작업 여러 건으로 이어졌습니다.",
+            "보고서는 조직이 보안 우선순위를 정하는 근거가 됐고, 후속 방어 작업 여러 건이 여기서 나왔습니다.",
             "배포 전에 CDP로 응답 헤더를 주입해 CSP 효과를 미리 재는 검증법을 팀에 남겼습니다.",
           ],
           techStack: "DOMPurify, CSP, Chrome DevTools Protocol, Grafana Loki, Next.js, esbuild",
-          visuals: [{"kind": "stack", "title": "운영 접근 로그 4xx 43,083건의 구성", "items": [{"label": "404 · 스캐너 정찰(.env 등)", "value": 80.5}, {"label": "그 밖의 404", "value": 18.9}, {"label": "404가 아닌 4xx", "value": 0.6}]}, {"kind": "flow", "title": "보안 이슈를 방어로 옮긴 순서", "steps": [{"label": "이슈 259건 수집", "sub": "KISA·모의해킹·감사 등"}, {"label": "소스 12,542개 대조"}, {"label": "운영 로그 전수조사"}, {"label": "우선순위 결정", "kind": "decision"}, {"label": "CSP·DOMPurify·콘솔 차단", "kind": "end"}]}],
+          visuals: [{"kind": "stack", "title": "운영 접근 로그 4xx 43,083건의 구성", "total": 43083, "unit": "건", "items": [{"label": "404 · 스캐너 정찰(.env 등)", "value": 80.5}, {"label": "그 밖의 404", "value": 18.9}, {"label": "404가 아닌 4xx", "value": 0.6}]}, {"kind": "flow", "title": "보안 이슈를 방어로 옮긴 순서", "steps": [{"label": "이슈 259건 수집", "sub": "KISA·모의해킹·감사 등"}, {"label": "소스 12,542개 대조"}, {"label": "운영 로그 전수조사"}, {"label": "우선순위 결정", "sub": "프론트 담당 미조치 항목", "kind": "decision", "branch": "서버 담당으로 이관"}, {"label": "CSP·DOMPurify·콘솔 차단", "kind": "end"}]}],
         },
         {
           title: "레거시 화면 오류 해소와 운영 장애 원인 규명",
@@ -139,7 +139,7 @@ export const resumeData: ResumeData = {
             "19자리 숫자가 재직렬화로 오염되는 잠복 결함도 함께 찾아냈습니다.",
           ],
           techStack: "JavaScript, Playwright, Grafana, Backbone, Next.js",
-          visuals: [{"kind": "flow", "title": "오류 화면이 생기던 경로와 바꾼 설계", "steps": [{"label": "서버 200 정상 응답"}, {"label": "렌더 가드: 빈 화면인가?", "sub": "세 경로에서 오판", "kind": "decision"}, {"label": "기존: 공통 500으로 이동", "sub": "하루 3,399건"}, {"label": "변경: 자동 이동 경로 제거", "kind": "end"}]}],
+          visuals: [{"kind": "flow", "title": "오류 화면이 생기던 경로와 바꾼 설계", "steps": [{"label": "서버 200 정상 응답"}, {"label": "렌더 가드: 빈 화면인가?", "sub": "세 경로에서 오판", "kind": "decision", "branch": "화면 유지"}, {"label": "기존: 공통 500으로 이동", "sub": "하루 3,399건"}, {"label": "변경: 자동 이동 경로 제거", "kind": "end"}]}],
         },
         {
           title: "신규 웹메일 품질 안정화와 릴리스 QC",
@@ -155,7 +155,7 @@ export const resumeData: ResumeData = {
             "develop에서 죽어 있던 메일 목록 테스트 126건을 되살렸습니다.",
           ],
           techStack: "React, TypeScript, Radix UI, TanStack Query, Vitest",
-          visuals: [{"kind": "bars", "title": "처리한 결함·QC 건수", "unit": "건", "items": [{"label": "웹메일 결함", "value": 44}, {"label": "4.6.0.0 QC", "value": 38}, {"label": "4.5.5.0 QC", "value": 25}]}, {"kind": "flow", "title": "첨부 드롭 오버레이 고착 — 세 번에 걸친 원인", "steps": [{"label": "1차", "sub": "유휴 타이머가 발화 못 함"}, {"label": "2차", "sub": "레거시가 drop 전파 차단"}, {"label": "3차", "sub": "Chrome relatedTarget null"}, {"label": "실제 드래그 로그로 확정", "kind": "end"}]}],
+          visuals: [{"kind": "bars", "title": "처리한 결함·QC 건수", "unit": "건", "items": [{"label": "웹메일 결함", "value": 44, "detail": "웹메일 테마 전체 처리 건수"}, {"label": "4.6.0.0 QC", "value": 38, "detail": "담당 미완료 38건 분류·일괄 PR"}, {"label": "4.5.5.0 QC", "value": 25, "detail": "PR 18개, Jira 댓글 28건"}]}, {"kind": "flow", "title": "첨부 드롭 오버레이 고착 — 세 번에 걸친 원인", "steps": [{"label": "1차", "sub": "유휴 타이머가 발화 못 함"}, {"label": "2차", "sub": "레거시가 drop 전파 차단"}, {"label": "3차", "sub": "Chrome relatedTarget null"}, {"label": "실제 드래그 로그로 확정", "kind": "end"}]}],
         },
         {
           title: "다우오피스 4.0 프론트엔드 아키텍처와 대시보드",
@@ -182,10 +182,10 @@ export const resumeData: ResumeData = {
           ],
           results: [
             "무인 자동화가 PR 11건을 올렸고, 10월 커밋의 95.6%가 AI와 함께 만든 커밋입니다.",
-            "설치 패키지와 사내 공유 글로 팀원도 같은 도구를 바로 쓰게 했습니다.",
+            "설치 패키지를 만들고 사내에 공유 글을 올려, 팀원도 같은 도구를 바로 쓸 수 있게 했습니다.",
           ],
           techStack: "Claude Code (Skills, Hooks), Sentry MCP, Jira·Bitbucket REST API, Playwright, GitHub Actions",
-          visuals: [{"kind": "flow", "title": "퇴근 뒤 무인 이슈 처리 흐름", "steps": [{"label": "'퇴근' 입력"}, {"label": "훅이 에이전트 2개 실행", "sub": "리오픈 · 다음 버전"}, {"label": "분석·수정·검증"}, {"label": "근거가 확실한가?", "kind": "decision"}, {"label": "PR 생성 또는 보고만", "sub": "결과는 메일로", "kind": "end"}]}],
+          visuals: [{"kind": "flow", "title": "퇴근 뒤 무인 이슈 처리 흐름", "steps": [{"label": "'퇴근' 입력"}, {"label": "훅이 에이전트 2개 실행", "sub": "리오픈 · 다음 버전"}, {"label": "분석·수정·검증"}, {"label": "근거가 확실한가?", "kind": "decision", "branch": "사람 확인 필요로 보고"}, {"label": "PR 생성", "sub": "결과는 메일로", "kind": "end"}]}],
         },
         {
           title: "AI PR 코드리뷰 시스템",
@@ -193,15 +193,15 @@ export const resumeData: ResumeData = {
             "리뷰가 리뷰어의 시간에 기대다 보니 PR마다 4~8시간을 기다렸고, 리뷰어마다 피드백 품질이 달랐습니다.",
           actions: [
             "Bitbucket 웹훅을 받아 Claude Code CLI로 리뷰하고 인라인 댓글과 요약을 남기는 NestJS 서버와 관리 대시보드를 만들었습니다.",
-            "프로젝트 컨벤션 문서와 과거 리뷰를 함께 넣어 코드베이스 맥락을 반영하고, P1~P3 심각도로 나눴습니다.",
-            "변경 규모·핵심 경로·테스트 부재 등 7가지 축으로 PR 영향도를 점수화해, 위험한 PR은 단독 머지를 막았습니다.",
+            "프로젝트 컨벤션 문서와 과거 리뷰를 함께 넣어 코드베이스 맥락을 반영했고, 지적은 P1~P3 심각도로 나눴습니다.",
+            "변경 규모·핵심 경로·테스트 부재 등 7가지 축으로 PR 영향도에 점수를 매기고, 위험한 PR은 단독 머지를 막았습니다.",
           ],
           results: [
             "리뷰 응답 시간이 4~8시간에서 1~2분으로 줄었습니다.",
-            "반복되는 컨벤션 지적이 자동화돼 리뷰어가 로직에 집중할 수 있게 됐습니다.",
+            "반복되던 컨벤션 지적은 자동화에 맡기고, 리뷰어는 로직에 집중하게 됐습니다.",
           ],
           techStack: "NestJS, TypeScript, Claude Code CLI, Ollama, Supabase, React 19, TanStack Query",
-          visuals: [{"kind": "compare", "title": "PR 리뷰 응답 시간", "before": {"value": "4~8시간", "label": "사람 리뷰 대기"}, "after": {"value": "1~2분", "label": "AI 리뷰"}}, {"kind": "flow", "title": "리뷰 파이프라인", "steps": [{"label": "Bitbucket 웹훅"}, {"label": "Claude Code 리뷰", "sub": "컨벤션·과거 리뷰 참고"}, {"label": "영향도 50점 초과?", "sub": "7축 100점", "kind": "decision"}, {"label": "인라인 댓글 · 머지 보류", "kind": "end"}]}],
+          visuals: [{"kind": "compare", "title": "PR 리뷰 응답 시간", "before": {"value": "4~8시간", "label": "사람 리뷰 대기"}, "after": {"value": "1~2분", "label": "AI 리뷰"}}, {"kind": "flow", "title": "리뷰 파이프라인", "steps": [{"label": "Bitbucket 웹훅"}, {"label": "Claude Code 리뷰", "sub": "컨벤션·과거 리뷰 참고"}, {"label": "영향도 50점 초과?", "sub": "7축 100점", "kind": "decision", "branch": "인라인 댓글만"}, {"label": "단독 머지 보류", "sub": "NEEDS_WORK", "kind": "end"}]}],
         },
         {
           title: "기획자용 다우오피스 디자인 MCP",
@@ -209,9 +209,9 @@ export const resumeData: ResumeData = {
             "기획자가 AI로 화면을 그리면 실제 다우오피스를 모르는 AI가 색과 클래스명을 지어냈고, 개발 단계에서 시안을 다시 맞춰야 했습니다.",
           actions: [
             "웹 화면 518개, 클래스 3,012종, 디자인 토큰 624개를 담은 MCP 서버를 만들어 npx 한 줄로 설치하게 했습니다.",
-            "이 MCP를 불러 디자인과 구현의 규격 차이를 미리 찾는 검수 서비스로 넓혔습니다.",
+            "이 MCP를 불러 쓰는 검수 서비스로 넓혀, 디자인과 구현의 규격 차이를 미리 찾게 했습니다.",
           ],
-          results: ["개발 파트를 넘어 기획 직군이 AI를 쓰는 방식을 바꿨습니다."],
+          results: ["개발 파트 밖에서도 기획 직군이 AI를 쓰는 방식이 바뀌었습니다."],
           techStack: "MCP SDK, TypeScript, Node.js, Next.js, SQLite",
         },
         {
@@ -227,7 +227,7 @@ export const resumeData: ResumeData = {
             "고객사별로 걸러 보며 CS 인입 건의 원인을 빠르게 찾게 됐습니다.",
           ],
           techStack: "@sentry/nextjs, @sentry/react, Next.js, React ErrorBoundary",
-          visuals: [{"kind": "flow", "title": "수집 기준을 바꾼 뒤의 흐름", "steps": [{"label": "모든 JS 오류"}, {"label": "흰 화면·API 5xx인가?", "kind": "decision"}, {"label": "고객사 태그 · fingerprint"}, {"label": "실제 장애만 대시보드에", "kind": "end"}]}],
+          visuals: [{"kind": "flow", "title": "수집 기준을 바꾼 뒤의 흐름", "steps": [{"label": "모든 JS 오류"}, {"label": "흰 화면·API 5xx인가?", "kind": "decision", "branch": "수집하지 않음"}, {"label": "고객사 태그 · fingerprint"}, {"label": "실제 장애만 대시보드에", "kind": "end"}]}],
         },
         {
           title: "토큰 갱신 경쟁 상태로 생긴 흰 화면 해소",
@@ -237,7 +237,7 @@ export const resumeData: ResumeData = {
             "갱신 중 들어오는 요청을 큐에 잡아 두는 잠금을 넣고, 갱신이 끝나면 현재 화면을 다시 불러오게 했습니다.",
             "비표준 에러 코드에서 갱신이 반복되지 않도록 방어 로직을 더했습니다.",
           ],
-          results: ["동시에 몰린 요청이 한 번의 갱신 뒤 일괄 재시도되는 것을 모듈별로 확인했습니다."],
+          results: ["동시에 몰린 요청이 한 번 갱신된 뒤 한꺼번에 재시도되는지 모듈별로 확인했습니다."],
           techStack: "TypeScript, XHR, Fetch API, JWT",
         },
         {
@@ -257,14 +257,14 @@ export const resumeData: ResumeData = {
             "임직원포탈이 무겁다는 피드백이 있었지만 메모리 누수인지 기본 적재량 문제인지 구분되지 않았고, 배포 뒤에는 브라우저에 구버전이 남는 일이 잦았습니다.",
           actions: [
             "홈과 메일함을 10회 왕복하며 힙을 재 누수가 아님을 확인하고, 전 화면에 실리는 리소스 4건(닫힌 다이얼로그 청크 2.3MB, ExtJS 5.8MB 등)을 줄 단위로 짚었습니다.",
-            "리소스 revision 버저닝과 Nginx Cache-Control 정리로 배포 시 캐시 무효화를 자동화했습니다.",
+            "리소스에 revision 버저닝을 붙이고 Nginx Cache-Control을 정리해, 배포할 때 캐시가 자동으로 무효화되게 했습니다.",
           ],
           results: [
             "'느리다'는 체감을 측정 가능한 개선 순서로 바꿨습니다.",
             "배포 뒤 구버전이 남는 문제가 사라졌습니다.",
           ],
           techStack: "Chrome DevTools, Nginx, Turborepo, Next.js standalone",
-          visuals: [{"kind": "bars", "title": "모든 화면에 실리던 리소스 크기", "unit": "MB", "items": [{"label": "통합설정 iframe 이중 로드(제거)", "value": 6.35}, {"label": "ESS ExtJS", "value": 5.8}, {"label": "레거시 CSS 9개", "value": 2.45, "display": "2.4MB"}, {"label": "닫힌 다이얼로그 청크", "value": 2.3}, {"label": "Dext5", "value": 0.35}]}],
+          visuals: [{"kind": "bars", "title": "모든 화면에 실리던 리소스 크기", "unit": "MB", "items": [{"label": "통합설정 iframe 이중 로드(제거)", "value": 6.35, "exact": "6.35MB", "detail": "선행 작업으로 제거"}, {"label": "ESS ExtJS", "value": 5.8}, {"label": "레거시 CSS 9개", "value": 2.45, "display": "2.4MB", "exact": "2,448KB"}, {"label": "닫힌 다이얼로그 청크", "value": 2.3}, {"label": "Dext5", "value": 0.35, "exact": "352KB"}]}],
         },
         {
           title: "VOC 레이더 — 고객사 이슈 분석 대시보드",
@@ -288,13 +288,13 @@ export const resumeData: ResumeData = {
         {
           title: "삐약삐약 안드로이드 앱 운영과 2차 개발",
           problem:
-            "영양제 복용관리 서비스로 모바일 웹과 네이티브가 함께 돌아야 했는데, Android와 iOS에 같은 로직이 따로 작성돼 있었고 출시도 수동이었습니다.",
+            "영양제 복용관리 서비스라 모바일 웹과 네이티브가 함께 돌아야 했습니다. 그런데 Android와 iOS에 같은 로직이 따로 작성돼 있었고 출시도 수동이었습니다.",
           actions: [
             "WebBridge로 모바일 웹과 네이티브 화면을 연결했습니다.",
             "KMM으로 Android·iOS 공통 비즈니스 로직을 한 곳에 모았습니다.",
-            "Jenkins로 출시노트를 포함한 구글플레이 트랙별 배포를 자동화했습니다.",
+            "구글플레이 트랙별 배포를 출시노트까지 포함해 Jenkins로 자동화했습니다.",
           ],
-          results: ["양 플랫폼의 중복 코드를 줄이고, 1.0.0.0부터 1.0.2.4까지 운영했습니다."],
+          results: ["두 플랫폼에 겹치던 코드를 줄였고, 1.0.0.0부터 1.0.2.4까지 운영했습니다."],
           techStack: "Android, Kotlin, KMP, Ktor, WebView",
         },
         {
@@ -305,7 +305,7 @@ export const resumeData: ResumeData = {
             "불필요한 의존성 주입을 걷어내고 Retrofit Base URL 로직을 정리했습니다.",
             "WebView 캐시 모드를 바로잡아 팝업 문제를 해결했습니다.",
           ],
-          results: ["코드 가독성과 테스트 용이성이 좋아졌고, 팝업이 의도대로 노출됐습니다."],
+          results: ["코드는 읽기 쉽고 테스트하기 쉬워졌으며, 팝업은 의도대로 노출됐습니다."],
           techStack: "Android, Kotlin, Retrofit, WebView",
         },
       ],
@@ -316,15 +316,15 @@ export const resumeData: ResumeData = {
       title: "Portfolio — 로컬 포트 관리 IDE형 데스크톱 앱",
       period: "2026.07 ~ 현재",
       problem:
-        "로컬에서 개발 서버와 프론트를 여러 개 띄우다 보면 어느 포트가 무엇이었는지 헷갈리고, 종료도 번거로우며, 미리보기와 로그가 여기저기 흩어졌습니다. AI에게 화면 조작을 시키려면 별도 브라우저 자동화 도구를 띄워야 하는 점도 불편했습니다.",
+        "로컬에서 개발 서버와 프론트를 여러 개 띄우다 보면 어느 포트가 무엇이었는지 헷갈리고, 종료도 번거롭고, 미리보기와 로그는 여기저기 흩어졌습니다. AI에게 화면 조작을 시키려면 브라우저 자동화 도구를 따로 띄워야 하는 것도 불편했습니다.",
       actions: [
-        "lsof로 LISTEN 중인 포트를 3초마다 감지해 포트·PID·프로세스·경로를 표시하고, HTTP 프로브로 web/srv 타입을 판별해 필터·검색·별칭·상단 고정을 지원하는 포트 관리 UI를 구현했습니다.",
-        "탭 UI로 여러 포트를 동시에 관리하며, 웹 포트는 앱 내 임베드 미리보기(주소창·뒤로/앞으로·개발자도구)로, 앱에서 실행한 서버는 실시간 stdout/stderr 로그로 보여주도록 했습니다.",
-        "앱 자체에 MCP 서버를 내장해 portfolio_snapshot·portfolio_click 등 도구로 Claude가 앱 안 미리보기 화면을 별도 브라우저 없이 직접 조작하는 \"AI 내부 화면 제어\"를 구현했습니다.",
-        "런타임 의존성 0의 순수 JS/HTML/CSS로 작성하고, macOS(Apple Silicon·Intel)·Windows 빌드와 Homebrew tap 배포를 구성했습니다.",
+        "lsof로 LISTEN 중인 포트를 3초마다 감지해 포트·PID·프로세스·경로를 보여 주는 포트 관리 UI를 만들었습니다. HTTP 프로브로 web/srv 타입을 판별하고, 필터·검색·별칭·상단 고정도 넣었습니다.",
+        "여러 포트는 탭 UI로 동시에 관리합니다. 웹 포트는 앱 내 임베드 미리보기(주소창·뒤로/앞으로·개발자도구)로, 앱에서 실행한 서버는 실시간 stdout/stderr 로그로 보여 줍니다.",
+        "앱 자체에 MCP 서버를 내장했습니다. Claude가 portfolio_snapshot·portfolio_click 등의 도구로 별도 브라우저 없이 앱 안 미리보기 화면을 직접 조작하는 \"AI 내부 화면 제어\"를 구현했습니다.",
+        "런타임 의존성 0, 순수 JS/HTML/CSS로 작성했고 macOS(Apple Silicon·Intel)·Windows 빌드와 Homebrew tap 배포를 구성했습니다.",
       ],
       results: [
-        "v0.1.2까지 릴리스해 GitHub Releases와 brew install --cask bamin0422/tap/portfolio로 설치할 수 있으며, LinkedIn과 사내 AI 라운지에 공개했습니다.",
+        "v0.1.2까지 릴리스했고 GitHub Releases와 brew install --cask bamin0422/tap/portfolio로 설치할 수 있습니다. LinkedIn과 사내 AI 라운지에도 공개했습니다.",
         "\"3000번 포트 화면에서 메일쓰기 눌러줘\" 같은 자연어 명령으로 앱 안 화면이 조작되는 것을 확인했습니다.",
       ],
       techStack:
@@ -342,16 +342,16 @@ export const resumeData: ResumeData = {
       title: "Dr Serial (구 HW Monitor)",
       period: "2025.01 ~ 현재",
       problem:
-        "Serial, TCP, UDP, BLE 등 다양한 프로토콜로 연결되는 하드웨어 장비의 통신 데이터를 실시간 모니터링할 수 있는 범용 데스크톱 툴이 없어, 프로토콜별로 별도 도구를 사용하거나 직접 스크립트를 작성해야 했습니다.",
+        "Serial, TCP, UDP, BLE 등 여러 프로토콜로 연결되는 하드웨어 장비의 통신 데이터를 실시간으로 모니터링할 범용 데스크톱 툴이 없었습니다. 그래서 프로토콜마다 도구를 따로 쓰거나 스크립트를 직접 작성해야 했습니다.",
       actions: [
-        "Electron 기반 크로스플랫폼 앱으로 Serial·TCP·UDP·BLE 멀티 프로토콜을 통합 지원했습니다.",
-        "LangChain 기반 다중 LLM(Anthropic, OpenAI, Gemini, Groq, Ollama)을 연동하여 수신 데이터를 자동 분석하도록 구현했습니다.",
-        "Supabase + Google OAuth 인증과 클라우드 설정 동기화를 구성하고, electron-updater 기반 자동 업데이트를 구현했습니다.",
+        "Electron 크로스플랫폼 앱 하나에서 Serial·TCP·UDP·BLE 멀티 프로토콜을 모두 지원했습니다.",
+        "LangChain으로 다중 LLM(Anthropic, OpenAI, Gemini, Groq, Ollama)을 연동해 수신 데이터를 자동으로 분석하게 했습니다.",
+        "Supabase + Google OAuth 인증과 클라우드 설정 동기화를 구성했고, 자동 업데이트는 electron-updater로 붙였습니다.",
         "GitHub Actions로 macOS·Windows·Linux 크로스 플랫폼 빌드를 자동화했습니다.",
       ],
       results: [
-        "단일 앱에서 프로토콜 전환과 실시간 데이터 시각화가 동작함을 확인했습니다.",
-        "LLM 분석 결과로 이상 패턴을 탐지할 수 있는지 실사용 검증을 진행 중입니다.",
+        "앱 하나에서 프로토콜을 전환하고 데이터를 실시간으로 시각화하는 것까지 확인했습니다.",
+        "LLM 분석 결과로 이상 패턴을 탐지할 수 있는지 실사용으로 검증하고 있습니다.",
       ],
       techStack:
         "Electron, React, TypeScript, electron-vite, Tailwind CSS, Radix UI, Zustand, LangChain, serialport, Supabase, electron-updater",
@@ -368,16 +368,16 @@ export const resumeData: ResumeData = {
       title: "사업자 등록번호 진위 여부 조회 MCP 서버",
       period: "2024.07 ~ 2024.09",
       problem:
-        "공공데이터포털의 사업자 정보 조회 API를 LLM 에이전트에서 바로 활용하려면 API 래핑 서버가 필요했고, 반복적인 환경 설정 없이 누구나 쉽게 배포할 수 있어야 했습니다.",
+        "공공데이터포털의 사업자 정보 조회 API를 LLM 에이전트에서 바로 쓰려면 API 래핑 서버가 필요했고, 환경 설정을 반복하지 않고도 누구나 쉽게 배포할 수 있어야 했습니다.",
       actions: [
-        "Model Context Protocol(MCP) 서버 규격으로 구현하여 Claude 등 MCP 호환 LLM과 바로 연동할 수 있도록 설계했습니다.",
-        "MVC 패턴 기반 TypeScript 서버 아키텍처를 설계하고, REST API와 MCP 도구를 동시에 제공하는 구조로 구현했습니다.",
-        "Docker 컨테이너화로 원클릭 배포가 가능하도록 만들고, Smithery AI 마켓플레이스에 등록했습니다.",
-        "API 인증키를 관리하고 보안 처리를 적용하면서, 에러 핸들링·로깅 시스템도 함께 구축했습니다.",
+        "Model Context Protocol(MCP) 서버 규격으로 구현해, Claude 등 MCP 호환 LLM과 바로 연동되도록 설계했습니다.",
+        "서버는 MVC 패턴의 TypeScript 아키텍처로 설계했고, REST API와 MCP 도구를 동시에 제공하게 구현했습니다.",
+        "Docker로 컨테이너화해 원클릭으로 배포할 수 있게 하고, Smithery AI 마켓플레이스에 등록했습니다.",
+        "API 인증키 관리와 보안 처리를 넣고, 에러 핸들링·로깅 시스템도 함께 갖췄습니다.",
       ],
       results: [
-        "MCP 클라이언트에서 자연어 쿼리로 사업자 진위 조회가 동작함을 확인했습니다.",
-        "Smithery AI 배포 후 외부 사용자가 접근 가능한 상태를 유지하고 있습니다.",
+        "MCP 클라이언트에서 자연어 쿼리로 사업자 진위 조회가 되는 것을 확인했습니다.",
+        "Smithery AI에 배포한 뒤로 외부 사용자가 계속 접근할 수 있습니다.",
       ],
       techStack:
         "TypeScript, Node.js, Express.js, Docker, MCP, REST API, 공공데이터포털 API",
@@ -396,14 +396,14 @@ export const resumeData: ResumeData = {
       title: "friendly-regex",
       period: "2024.09 ~ 현재",
       problem:
-        "프로젝트마다 이메일·전화번호·URL 등 공통 정규표현식을 반복 작성하거나 복사해 쓰는 비효율이 있었습니다. 가독성이 낮은 정규식 리터럴은 유지보수도 어려웠습니다.",
+        "프로젝트마다 이메일·전화번호·URL 등 공통 정규표현식을 매번 다시 작성하거나 복사해 썼습니다. 읽기 어려운 정규식 리터럴은 유지보수도 힘들었습니다.",
       actions: [
-        "자주 쓰는 패턴을 네이밍된 함수로 제공하는 경량 유틸리티 라이브러리로 추상화했습니다.",
-        "npm 패키지로 배포해 어느 프로젝트에서나 즉시 설치·사용할 수 있도록 공개했습니다.",
-        "패키지 버전을 관리하면서 정규식 패턴을 점진적으로 추가했습니다.",
+        "자주 쓰는 패턴을 이름 붙은 함수로 감싸 경량 유틸리티 라이브러리로 만들었습니다.",
+        "npm 패키지로 공개해 어느 프로젝트에서나 바로 설치해 쓸 수 있게 했습니다.",
+        "패키지 버전을 관리하면서 정규식 패턴을 조금씩 추가했습니다.",
       ],
       results: [
-        "npm 배포 후 실제 프로젝트에 적용해 정규식 중복 작성을 제거했음을 확인했습니다.",
+        "npm에 배포한 뒤 실제 프로젝트에 적용해, 정규식을 중복 작성하던 부분을 없앴습니다.",
         "이메일·전화번호·URL 등 자주 쓰는 정규식을 함수 호출로 치환할 수 있게 됐습니다.",
       ],
       techStack: "JavaScript, Regex, npm, npm publish",
@@ -416,15 +416,15 @@ export const resumeData: ResumeData = {
       title: "my-ticket-timer",
       period: "2024.07 ~ 2024.09",
       problem:
-        "티켓팅 시 일반적인 타이머는 정형화된 UI라서 시각적 즐거움이 부족했습니다. 사용자가 직접 시계를 커스터마이징하며 티켓팅 경험을 더 재미있게 만들 수 있는 도구가 필요했습니다.",
+        "티켓팅할 때 쓰는 타이머는 대개 UI가 정형화돼 있어 보는 재미가 부족했습니다. 사용자가 시계를 직접 커스터마이징해 티켓팅을 더 재미있게 할 수 있는 도구가 필요했습니다.",
       actions: [
-        "FSD(Feature-Sliced Design) 아키텍처를 기반으로 프로젝트 구조를 설정했습니다.",
-        "framer-motion을 활용해 SearchBar·Timer 컴포넌트의 애니메이션을 구현하고, useTimer 커스텀 훅을 작성했습니다.",
-        "color picker 라이브러리를 활용해 사용자가 시계 색상을 커스터마이징할 수 있는 기능을 구현했습니다.",
+        "프로젝트 구조는 FSD(Feature-Sliced Design) 아키텍처로 잡았습니다.",
+        "framer-motion으로 SearchBar·Timer 컴포넌트 애니메이션을 구현하고, useTimer 커스텀 훅을 작성했습니다.",
+        "color picker 라이브러리를 붙여 사용자가 시계 색상을 커스터마이징할 수 있게 했습니다.",
         "Next.js API Routes로 CORS 이슈를 우회하고, Vercel에 배포했습니다.",
       ],
       results: [
-        "Vercel 배포 후 라이브 운영을 이어가고 있습니다.",
+        "Vercel에 배포한 뒤 지금도 라이브로 운영하고 있습니다.",
         "사용자가 시계 색상·애니메이션을 커스터마이징하며 티켓팅에 사용할 수 있게 됐습니다.",
       ],
       techStack:

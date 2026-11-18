@@ -34,6 +34,9 @@
   }
   body {
     @apply text-foreground;
+    /* 한글은 어절 단위로 줄바꿈한다 */
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 }
 
@@ -175,5 +178,64 @@ html {
   }
   .timeline-item::before {
     left: -1.1rem;
+  }
+}
+
+/* ---------- 도표 등장 애니메이션 ----------
+   .viz에 data-in이 붙는 순간(처음 화면에 들어올 때) 한 번 재생된다. */
+.viz [data-grow-x] {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.viz [data-grow-y] {
+  transform: scaleY(0);
+  transform-origin: center bottom;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.viz [data-fade],
+.viz [data-rise] {
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.viz [data-rise] {
+  transform: translateY(10px);
+}
+.viz[data-in] [data-grow-x] {
+  transform: scaleX(1);
+}
+.viz[data-in] [data-grow-y] {
+  transform: scaleY(1);
+}
+.viz[data-in] [data-fade],
+.viz[data-in] [data-rise] {
+  opacity: 1;
+  transform: none;
+}
+/* 흐름도 진행선 위를 흐르는 점 */
+.viz [data-flow-dot] {
+  left: 0;
+  opacity: 0;
+}
+.viz[data-in] [data-flow-dot] {
+  animation: flow-dot 2.6s cubic-bezier(0.45, 0, 0.55, 1) 1.4s infinite;
+}
+@keyframes flow-dot {
+  0% { left: 0; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { left: calc(100% - 10px); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .viz [data-grow-x],
+  .viz [data-grow-y],
+  .viz [data-fade],
+  .viz [data-rise] {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+  .viz [data-flow-dot] {
+    display: none;
   }
 }

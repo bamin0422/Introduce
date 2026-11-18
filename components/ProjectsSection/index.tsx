@@ -49,7 +49,7 @@ const projects: ProjectInfo[] = [
     problem:
       "Serial, TCP, UDP, BLE로 연결된 장비의 통신을 한 번에 볼 수 있는 데스크톱 도구가 없어, 프로토콜마다 다른 도구를 쓰거나 스크립트를 짜야 했습니다.",
     actions: [
-      "네 가지 프로토콜을 하나의 Electron 앱에서 지원했습니다.",
+      "Electron 앱 하나에서 네 가지 프로토콜을 지원했습니다.",
       "여러 LLM(Anthropic, OpenAI, Gemini, Ollama 등)을 연결해 받은 데이터를 자동으로 분석하게 했습니다.",
       "Google 로그인과 설정 동기화, 자동 업데이트, 3개 OS 빌드 자동화를 구성했습니다.",
     ],
