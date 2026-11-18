@@ -4,9 +4,9 @@ import { cn } from "@web/lib/utils";
 
 const SECTIONS = [
   { id: "overview", label: "2026" },
-  { id: "skills", label: "일하는 방식" },
-  { id: "work", label: "경력" },
-  { id: "project", label: "프로젝트" },
+  { id: "skills", label: "Skills" },
+  { id: "work", label: "Experience" },
+  { id: "project", label: "Projects" },
 ];
 
 /** 항상 보이는 상단 메뉴. 현재 보고 있는 섹션만 진하게 표시한다 */
@@ -60,7 +60,7 @@ export default function Nav() {
           href="#contact"
           className="hidden shrink-0 rounded-lg bg-primary px-3.5 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-[#2272eb] sm:inline-block"
         >
-          연락하기
+          Contact
         </a>
       </nav>
     </header>

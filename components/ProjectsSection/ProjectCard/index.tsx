@@ -7,6 +7,7 @@ import {
 } from "@web/components/ui/card";
 import { Badge } from "@web/components/ui/badge";
 import { ParLabel, ParList } from "@web/components/ui/par";
+import { Viz } from "@web/components/viz";
 import { Button } from "@web/components/ui/button";
 import { ExternalLink } from "lucide-react";
 import { ProjectInfo } from "../types";
@@ -35,8 +36,11 @@ export function ProjectCard({ projectInfo }: Props) {
         </a>
       )}
       <CardHeader>
-        <div className="flex items-baseline justify-between">
-          <CardTitle className="text-base">{projectInfo.title}</CardTitle>
+        <div className="flex items-center gap-3">
+          {projectInfo.icon && (
+            <img src={`/images/icons/${projectInfo.icon}.webp`} alt="" width={40} height={40} loading="lazy" className="h-10 w-10 shrink-0" />
+          )}
+          <CardTitle className="flex-1 text-base leading-snug">{projectInfo.title}</CardTitle>
           <span className="text-xs text-muted-foreground whitespace-nowrap ml-2">
             {projectInfo.startDate} — {projectInfo.endDate}
           </span>
@@ -57,6 +61,7 @@ export function ProjectCard({ projectInfo }: Props) {
           <ParLabel kind="R" />
           <ParList items={projectInfo.results} />
         </div>
+        {projectInfo.visuals?.map((v) => <Viz key={v.title} v={v} />)}
         <div className="flex flex-wrap gap-1.5 pt-1">
           {projectInfo.techStack.split(", ").map((tech) => (
             <Badge

@@ -13,8 +13,8 @@ export function WorkSection() {
   return (
     <section id="work" className="scroll-mt-24">
       <Reveal>
-        <p className="section-eyebrow">Work · 다우기술</p>
-        <h2 className="section-title">문제, 해결, 결과로 정리한 경력</h2>
+        
+        <h2 className="section-title">Experience</h2>
       </Reveal>
       <Reveal>
         <a

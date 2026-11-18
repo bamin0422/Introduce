@@ -136,8 +136,8 @@ export default function OverviewSection() {
   return (
     <section id="overview" className="scroll-mt-24">
       <Reveal>
-        <p className="section-eyebrow">2026 · 숫자로 본 역량</p>
-        <h2 className="section-title">프론트엔드 개발자로 한 일, 숫자로 보면</h2>
+        
+        <h2 className="section-title">2026 Highlights</h2>
       </Reveal>
       <div className="grid gap-4 md:grid-cols-2">
         {AREAS.map((a) => (

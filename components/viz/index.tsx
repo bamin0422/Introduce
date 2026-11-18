@@ -255,12 +255,12 @@ function Compare({ v }: { v: Extract<Visual, { kind: "compare" }> }) {
       <div className="flex items-center gap-3">
         <div data-rise className="flex-1 rounded-xl bg-card px-4 py-3">
           <p className="text-[11px] text-muted-foreground">{v.before.label}</p>
-          <p className="mt-1 text-xl font-extrabold tracking-tight text-muted-foreground line-through decoration-1">{v.before.value}</p>
+          <p className={cn("mt-1 font-extrabold tracking-tight [overflow-wrap:anywhere] text-muted-foreground line-through decoration-1", v.before.value.length > 14 ? "font-mono text-sm" : "text-xl")}>{v.before.value}</p>
         </div>
         <span data-rise style={delay(2, 120)} aria-hidden className="text-lg text-primary">→</span>
         <div data-rise style={delay(4, 120)} className="flex-1 rounded-xl bg-primary px-4 py-3 text-primary-foreground shadow-[0_6px_16px_-6px_hsl(var(--primary)/0.6)]">
           <p className="text-[11px] text-white/80">{v.after.label}</p>
-          <p className="mt-1 text-xl font-extrabold tracking-tight">{v.after.value}</p>
+          <p className="mt-1 text-xl font-extrabold tracking-tight [overflow-wrap:anywhere]">{v.after.value}</p>
         </div>
       </div>
       {v.note && <p className="mt-3 text-xs text-muted-foreground">{v.note}</p>}

@@ -46,8 +46,8 @@ export default function IntroduceSection() {
   return (
     <section id="skills" className="scroll-mt-24">
       <Reveal>
-        <p className="section-eyebrow">Skills · 핵심 역량</p>
-        <h2 className="section-title">이렇게 일합니다</h2>
+        
+        <h2 className="section-title">Skills</h2>
       </Reveal>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -31,6 +31,8 @@ const projects: ProjectInfo[] = [
     ],
     techStack:
       "Electron, JavaScript, HTML/CSS, MCP, Claude Code CLI, electron-builder, Homebrew",
+    icon: "p-portfolio",
+    visuals: [{"kind": "flow", "title": "앱이 하는 일", "steps": [{"label": "포트 감지", "sub": "lsof, 3초마다"}, {"label": "웹 포트인가?", "kind": "decision", "branch": "서버 로그 보기"}, {"label": "앱 안 미리보기"}, {"label": "Claude가 MCP로 조작", "kind": "end"}]}],
   },
   {
     title: "Dr Serial (구 HW Monitor)",
@@ -59,6 +61,8 @@ const projects: ProjectInfo[] = [
     ],
     techStack:
       "Electron, React, TypeScript, electron-vite, Tailwind CSS, Radix UI, Zustand, LangChain, serialport, Supabase, electron-updater",
+    icon: "p-drserial",
+    visuals: [{"kind": "bars", "title": "한 앱에서 다루는 범위", "items": [{"label": "연결 LLM", "value": 5, "display": "5종", "detail": "Anthropic, OpenAI, Gemini, Groq, Ollama"}, {"label": "통신 프로토콜", "value": 4, "display": "4종", "detail": "Serial, TCP, UDP, BLE"}, {"label": "빌드 대상 OS", "value": 3, "display": "3종", "detail": "macOS, Windows, Linux"}]}],
   },
   {
     title: "사업자 등록번호 진위 여부 조회 MCP 서버",
@@ -87,6 +91,8 @@ const projects: ProjectInfo[] = [
     ],
     techStack:
       "TypeScript, Node.js, Express.js, Docker, MCP, REST API, 공공데이터포털 API",
+    icon: "p-bizcheck",
+    visuals: [{"kind": "flow", "title": "자연어 질문이 조회 결과가 되기까지", "steps": [{"label": "Claude에 질문"}, {"label": "MCP 도구 호출"}, {"label": "공공데이터포털 API"}, {"label": "진위 결과", "kind": "end"}]}],
   },
   {
     title: "friendly-regex",
@@ -108,6 +114,8 @@ const projects: ProjectInfo[] = [
       "정규식 리터럴 대신 함수 호출 한 줄로 바꿔 쓸 수 있게 됐습니다.",
     ],
     techStack: "JavaScript, Regex, npm, npm publish",
+    icon: "p-regex",
+    visuals: [{"kind": "compare", "title": "이메일 검사 코드", "before": {"value": "/^[\\w.-]+@[\\w-]+\\.[\\w.]+$/", "label": "정규식 리터럴"}, "after": {"value": "isEmail(value)", "label": "friendly-regex"}, "note": "이메일·전화번호·IP·URL 경로 등 패턴 11종, 각각 is·Matcher·Replacer 함수 제공"}],
   },
   {
     title: "my-ticket-timer",
@@ -130,6 +138,8 @@ const projects: ProjectInfo[] = [
     ],
     techStack:
       "Next.js, React.js, TypeScript, pnpm, framer-motion, Tailwind CSS",
+    icon: "p-timer",
+    visuals: [{"kind": "flow", "title": "타이머 쓰는 흐름", "steps": [{"label": "날짜·시각 입력"}, {"label": "시계 색 고르기"}, {"label": "초 단위 카운트다운"}, {"label": "티켓팅 시작", "kind": "end"}]}],
   },
 ];
 
@@ -137,8 +147,8 @@ export function ProjectsSection() {
   return (
     <section id="project" className="scroll-mt-24">
       <Reveal>
-        <p className="section-eyebrow">Projects · {projects.length}</p>
-        <h2 className="section-title">업무 밖에서 만든 것들</h2>
+        
+        <h2 className="section-title">Projects</h2>
       </Reveal>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((projectInfo, i) => (
